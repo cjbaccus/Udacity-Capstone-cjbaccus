@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Install Docker-compose
           working_directory: ~/
-          command: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          command: pip install docker-compose
       - run:
           name: Git netbox repo
           working_directory: ~/
@@ -29,7 +29,8 @@ jobs:
       - run:
           name: pull docker images
           working_directory: ~/netbox-docker
-          command: cat build.sh
+          command: docker-compose pull
+          
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
