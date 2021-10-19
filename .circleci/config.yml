@@ -18,12 +18,12 @@ jobs:
         name: Install Docker-compose
         working_directory: ~/
         command: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#      - run:
-#          name: Git netbox repo
-#          command: |
-#            git clone https://github.com/netbox-community/netbox-docker.git
-#            cd netbox-docker
-#            docker-compose pull
+      - run:
+        name: Git netbox repo
+        command: |
+          git clone https://github.com/netbox-community/netbox-docker.git
+          cd netbox-docker
+          docker-compose pull
       - run:
           name: Check Python Version
           working_directory: ~/
