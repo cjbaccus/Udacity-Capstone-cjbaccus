@@ -20,6 +20,7 @@ jobs:
           command: ls -la && pwd
       - run:
           name: Perform update
+          become: true
           command: apt-get update 
       # - save_cache:
       #     paths: [backend/node_modules]
