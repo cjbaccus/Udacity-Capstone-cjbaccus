@@ -21,10 +21,6 @@ jobs:
           name: Git netbox repo
           command: git clone https://github.com/netbox-community/netbox-docker.git; ls -la netbox-docker
       - run:
-          name: docker Pull
-          working_directory: ~/netbox-docker
-          command: sudo docker-compose pull
-      - run:
           name: Check Python Version
           working_directory: ~/
           command: python -V
