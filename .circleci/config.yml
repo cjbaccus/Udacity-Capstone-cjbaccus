@@ -15,9 +15,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: npm install
+          name: Check directory
           working_directory: ~/
           command: ls -la && pwd
+      - run:
+          name: Perform update
+          command: apt-get update 
       # - save_cache:
       #     paths: [backend/node_modules]
       #     key: backend-build
