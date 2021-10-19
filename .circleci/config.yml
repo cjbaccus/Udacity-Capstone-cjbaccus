@@ -11,7 +11,7 @@ orbs:
 jobs:
   Spinup-Test-Python:
     docker:
-      - image: circleci/python:[3.9.7-buster]
+      - image: circleci/python:3.9.7-buster
     steps:
       - checkout
       - run:
