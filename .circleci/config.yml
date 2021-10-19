@@ -29,7 +29,7 @@ jobs:
       - run:
           name: pull docker images
           working_directory: ~/netbox-docker
-          command: sudo docker-compose pull
+          command: which docker-compose
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
