@@ -21,6 +21,10 @@ jobs:
       - run:
           name: Git netbox repo
           command: git clone https://github.com/netbox-community/netbox-docker.git netbox_src
+      - run:
+          name: docker-compose pull
+          working_directory: ~/netbox_src
+          command: /usr/local/bin/docker-compose pull
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
