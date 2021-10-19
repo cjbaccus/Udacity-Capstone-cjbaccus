@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Pull netbox docker
           working_directory: ~/netbox_src
-          command: sudo /usr/local/bin/docker-compose pull
+          command: sudo ls -la && pwd
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
