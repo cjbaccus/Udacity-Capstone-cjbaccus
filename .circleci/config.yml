@@ -20,7 +20,7 @@ jobs:
           command: ls -la && pwd
       - run:
           name: Git netbox repo
-          command: git clone https://github.com/netbox-community/netbox-docker.git; ls -la
+          command: git clone https://github.com/netbox-community/netbox-docker.git; ls -la netbox-docker
       - run:
           name: Install Docker-compose
           working_directory: ~/
