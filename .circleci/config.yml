@@ -19,12 +19,8 @@ jobs:
           working_directory: ~/
           command: ls -la && pwd
       - run:
-          name: Perform update
-          become: true
-          command: apt-get update 
-      # - save_cache:
-      #     paths: [backend/node_modules]
-      #     key: backend-build
+          name: Git netbox repo
+          command: git clone https://github.com/netbox-community/netbox-docker.git netbox_src
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
