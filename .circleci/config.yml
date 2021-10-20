@@ -24,8 +24,10 @@ jobs:
           command: pip install cryptocmd && pip install pandas && pip install pylint
       - run:
           name: Lint the code
-          working_directory: ~/projects/scripts/
-          command: pylint cryptotest.py
+          working_directory: ~/project/scripts/
+          command: |
+            pylint cryptotest.py
+            pylint --help
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
