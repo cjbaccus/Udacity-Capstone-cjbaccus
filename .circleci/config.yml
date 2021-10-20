@@ -25,7 +25,9 @@ jobs:
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
-          command: ls -la && pwd
+          command: |
+            sudo chmod 755 cryptotest.py
+            python cryptotest.py
       
   Linting:
     docker:
