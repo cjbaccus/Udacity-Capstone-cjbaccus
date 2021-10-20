@@ -3,6 +3,8 @@ Udacity DevOps nano degree capstone project
 
 [![CircleCI](https://circleci.com/gh/cjbaccus/Udacity-Capstone-cjbaccus/tree/main.svg?style=svg)](https://circleci.com/gh/cjbaccus/Udacity-Capstone-cjbaccus/tree/main)
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/cjbaccus/Udacity-Capstone-cjbaccus?style=flat-square)
+
 ### Rubric items for project
 
 1. *Propose and Scope the Project*
