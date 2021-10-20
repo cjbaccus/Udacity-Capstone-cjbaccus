@@ -17,3 +17,5 @@ scraper.export("csv", name="xrp_all_time")
 
 # Pandas dataFrame for the same data
 df = scraper.get_dataframe()
+
+print(df)
