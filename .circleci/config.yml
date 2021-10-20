@@ -43,11 +43,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install dependancies
+          name: install dependancies
           working_directory: ~/
           command: pip install cryptocmd pandas
       - run:
-        name: test script
+          name: test script
           working_directory: ~/scripts
           command: |
             python3 cryptotest.py
