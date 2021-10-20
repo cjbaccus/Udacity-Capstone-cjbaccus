@@ -22,6 +22,16 @@ jobs:
           name: Install cryptocmd application
           working_directory: ~/
           command: pip install cryptocmd
+  Linting:
+    docker:
+      - image: circlci/python:3.9.7-buster
+    steps:
+      - checkout
+      - run:
+          name: Lint code files
+          working_directory: ~/scripts
+          command: ls -la
+          
   Smoke-Test-application:
     docker:
       - image: circleci/python:3.9.7-buster
@@ -33,9 +43,8 @@ jobs:
           command: pip install cryptocmd pandas
       - run:
           name: test script
-          working_directory: ~/
+          working_directory: ~/scripts
           command: |
-            cd scripts
             python3 cryptotest.py
 
 # Invoke jobs via workflows
@@ -44,4 +53,7 @@ workflows:
    Spinup-Test-Python:
     jobs:
       -  Spinup-Test-Python
+      -  Linting
+           requires: [Spinup-Test-Python]
       -  Smoke-Test-application
+          requires: [Linting]
