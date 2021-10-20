@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+''' This will return the current values of ethereum blockchain based on daily market values'''
+
 from cryptocmd import CmcScraper
 #import pandas
 
