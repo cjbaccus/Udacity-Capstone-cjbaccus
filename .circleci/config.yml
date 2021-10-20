@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Install cryptocmd application
           working_directory: ~/
-          command: pip install cryptocmd
+          command: pip install cryptocmd && pip install pandas
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
