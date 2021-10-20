@@ -24,7 +24,7 @@ jobs:
           command: pip install cryptocmd
   Linting:
     docker:
-      - image: circlci/python:3.9.7-buster
+      - image: circleci/python:3.9.7-buster
     steps:
       - checkout
       - run:
