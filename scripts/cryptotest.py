@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from cryptocmd import CmcScraper
-import pandas
+#import pandas
 
 # initialise scraper without time interval
 scraper = CmcScraper("ETH")
@@ -18,4 +18,4 @@ scraper.export("csv", name="eth_all_time")
 # Pandas dataFrame for the same data
 df = scraper.get_dataframe()
 
-print(df.High)
+print(df)
