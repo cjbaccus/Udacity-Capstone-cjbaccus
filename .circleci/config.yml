@@ -19,18 +19,25 @@ jobs:
           working_directory: ~/
           command: ls -la && pwd
       - run:
-          name: Install Docker-compose
+          name: Install cryptocmd application
           working_directory: ~/
-          command: pip install docker-compose
+          command: pip install cryptocmd
+  Smoke Test application:
+    docker:
+      - image: circleci/python:3.9.7-buster
+    steps:
+      - checkout
       - run:
-          name: Git netbox repo
+          name: install dependancies
           working_directory: ~/
-          command: git clone https://github.com/netbox-community/netbox-docker.git
+          command: pip install cryptocmd pandas
       - run:
-          name: pull docker images
-          working_directory: ~/netbox-docker
-          command: ls -la && cat *.sh
-          
+          name: test script
+          working_directory: ~/
+          command: |
+            cd scripts
+            python3 cryptotest.py
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
