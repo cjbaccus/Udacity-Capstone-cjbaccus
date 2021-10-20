@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Get files from scripts folder
           working_directory: ~/
-          command: ls -la /home/circleci/
+          command: ls -la /home/circleci/project/
       
   Linting:
     docker:
