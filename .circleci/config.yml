@@ -24,8 +24,8 @@ jobs:
           command: pip install cryptocmd
       - run:
           name: Get files from scripts folder
-          working_directory: ~/
-          command: ls -la /home/circleci/project/
+          working_directory: ~/project/scripts/
+          command: ls -la && pwd
       
   Linting:
     docker:
