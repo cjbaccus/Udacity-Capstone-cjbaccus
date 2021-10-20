@@ -22,7 +22,7 @@ jobs:
           name: Install cryptocmd application
           working_directory: ~/
           command: pip install cryptocmd
-  Smoke Test application:
+  Smoke-Test-application:
     docker:
       - image: circleci/python:3.9.7-buster
     steps:
@@ -44,3 +44,4 @@ workflows:
    Spinup-Test-Python:
     jobs:
       -  Spinup-Test-Python
+      -  Smoke-Test-application
