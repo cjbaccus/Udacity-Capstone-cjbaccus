@@ -53,7 +53,7 @@ workflows:
    Spinup-Test-Python:
     jobs:
       -  Spinup-Test-Python
-      -  Linting
+      -  Linting:
           requires: [Spinup-Test-Python]
-      -  Smoke-Test-application
+      -  Smoke-Test-application:
           requires: [Linting]
