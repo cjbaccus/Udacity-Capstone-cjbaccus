@@ -28,12 +28,13 @@ jobs:
           command: |
             pylint cryptotest.py
             pylint --help
+            python3 -V
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
           command: |
             sudo chmod 755 cryptotest.py
-            python cryptotest.py
+            python3 cryptotest.py
       
   Linting:
     docker:
