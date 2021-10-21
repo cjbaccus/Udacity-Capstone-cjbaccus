@@ -15,10 +15,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check directory
-          working_directory: ~/
-          command: ls -la && pwd
-      - run:
           name: Install cryptocmd application
           working_directory: ~/
           command: pip install cryptocmd && pip install pandas && pip install pylint
