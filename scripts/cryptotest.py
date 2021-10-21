@@ -12,7 +12,7 @@ scraper = CmcScraper("ETH")
 headers, data = scraper.get_data()
 
 # get data in a json format
-xrp_json_data = scraper.get_data("json")
+eth_json_data = scraper.get_data("json")
 
 # export the data as csv file, you can also pass optional `name` parameter
 scraper.export("csv", name="eth_all_time")
