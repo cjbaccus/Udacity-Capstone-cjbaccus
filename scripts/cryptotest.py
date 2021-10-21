@@ -6,7 +6,7 @@ from cryptocmd import CmcScraper
 #import pandas
 
 # initialise scraper without time interval
-scraper = CmcScraper("ETH")
+scraper = CmcScraper("ETH", "23-09-2021", "20-10-2021")
 
 # get raw data as list of list
 headers, data = scraper.get_data()
