@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Lint code files
           working_directory: ~/scripts
-          command: ls -la
+          command: ls -la && pwd
           
   Smoke-Test-application:
     docker:
