@@ -71,7 +71,15 @@ jobs:
             pip3 install ansible
             pip3 --version
             ansible --version
+            # apt install docker
             ls -la && cat inventory.txt
+      - run:
+          name: Run ansible to setup EC2 server with Docker
+          working_directory: ~/project/.circleci/
+          become: True
+          command: |
+            ansible-galaxy install lae.netbox
+            
 
           
   Smoke-Test-application:
