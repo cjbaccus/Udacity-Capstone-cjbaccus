@@ -55,16 +55,22 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/inventory.txt
-            
+
   Linting:
     docker:
       - image: circleci/python:3.9.7-buster
     steps:
       - checkout
       - run:
-          name: Lint code files
-          working_directory: ~/scripts
-          command: ls -la && pwd && ls
+          name: Install Dependancies
+          working_directory: ~/project/.circleci/
+          become: True
+          command: |
+            pip3 install ansible
+            pip3 --version
+            ansible --version
+            ls -la && cat inventory.txt
+
           
   Smoke-Test-application:
     docker:
@@ -88,7 +94,7 @@ workflows:
       jobs:
         #- Spinup-Test-Python
         - AWS-cloudformation-infra
-        #-  Linting:
+        -  Linting:
         #    requires: [Spinup-Test-Python]
         #-  Smoke-Test-application:
         #    requires: [Linting]
