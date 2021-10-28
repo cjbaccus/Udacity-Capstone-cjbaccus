@@ -1,13 +1,9 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
 orbs:
   #slack: circleci/slack@4.1.4
   #aws-cli: circleci/aws-cli@1.3.0
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   Spinup-Test-Python:
     docker:
@@ -46,7 +42,18 @@ jobs:
               --template-file .circleci/files/backend.yml \
               --tags project="netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
               --stack-name "netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"      
+              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
+      - run:
+          name: Add to ansible inventory
+          command: |
+            aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --output text >> .circleci/inventory.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ~/.circleci/inventory.txt
+
   Linting:
     docker:
       - image: circleci/python:3.9.7-buster
