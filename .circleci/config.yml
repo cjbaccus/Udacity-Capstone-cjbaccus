@@ -49,10 +49,6 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text >> .circleci/inventory.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - ~/.circleci/inventory.txt
 
   Linting:
     docker:
