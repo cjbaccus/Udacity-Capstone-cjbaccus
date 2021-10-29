@@ -78,7 +78,8 @@ jobs:
           working_directory: ~/project/.circleci/
           become: True
           command: |
-            ansible-galaxy install lae.netbox
+            #ansible-galaxy install lae.netbox
+            ansible-galaxy install geerlingguy.postgresql davidwittman.redis lae.netbox
             
 
           
