@@ -83,7 +83,6 @@ jobs:
       - run:
           name: Ansible playbook
           working_directory: ~/project/.circleci/
-          become: True
           command: |
             ansible-playbook -i inventory.txt ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml -K
             
