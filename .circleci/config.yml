@@ -56,7 +56,8 @@ jobs:
           paths:
             - project/.circleci/inventory.txt
 
-  Linting:
+  #Linting:
+  NetboxSetup:
     docker:
       - image: circleci/python:3.9.7-buster
     steps:
@@ -118,8 +119,9 @@ workflows:
     Spinup-Test-Python:
       jobs:
         #- Spinup-Test-Python
-        - AWS-cloudformation-infra
-        -  Linting:
-            requires: [AWS-cloudformation-infra]
+       # - AWS-cloudformation-infra
+        - NetboxSetup
+        #-  Linting:
+        #    requires: [AWS-cloudformation-infra]
         #-  Smoke-Test-application:
         #    requires: [Linting]
