@@ -83,10 +83,11 @@ jobs:
             ls -la ~/.ansible
             ls -la ~/.ansible/roles/lae.netbox/examples/
             cat ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/.circleci/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+            - .ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
             
       - run:
           name: Ansible playbook
