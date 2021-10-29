@@ -80,6 +80,14 @@ jobs:
           command: |
             #ansible-galaxy install lae.netbox
             ansible-galaxy install geerlingguy.postgresql davidwittman.redis lae.netbox
+            ls -la ~/.ansible
+            ls -la ~/.ansible/roles/lae.netbox/examples/
+            cat ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/.circleci/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+            
       - run:
           name: Ansible playbook
           working_directory: ~/project/.circleci/
