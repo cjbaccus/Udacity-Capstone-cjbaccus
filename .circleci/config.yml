@@ -73,7 +73,8 @@ jobs:
             pip3 --version
             ansible --version
             # apt install docker
-            ls -la && cat inventory.txt
+            ls -la
+            # cat inventory.txt
       - run:
           name: Run ansible-galaxy to setup netbox
           working_directory: ~/project/.circleci/
