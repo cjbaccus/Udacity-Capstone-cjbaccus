@@ -96,9 +96,7 @@ jobs:
           working_directory: ~/project/.circleci/
           command: |
             ansible-playbook -i 127.0.0.1, ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml -K
-            
-
-          
+              
   Smoke-Test-application:
     docker:
       - image: circleci/python:3.9.7-buster
