@@ -57,45 +57,45 @@ jobs:
             - project/.circleci/inventory.txt
 
   #Linting:
-  NetboxSetup:
-    docker:
-      - image: circleci/python:3.9.7-buster
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Install Dependancies
-          working_directory: ~/project/.circleci/
-          become: True
-          command: |
-            pip3 install ansible
-            pip3 --version
-            ansible --version
-            # apt install docker
-            ls -la
-            # cat inventory.txt
-      - run:
-          name: Run ansible-galaxy to setup netbox
-          working_directory: ~/project/.circleci/
-          become: True
-          command: |
-            #ansible-galaxy install lae.netbox
-            ansible-galaxy install geerlingguy.postgresql davidwittman.redis lae.netbox
-            ls -la ~/.ansible
-            ls -la ~/.ansible/roles/lae.netbox/examples/
-            cat ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+  # NetboxSetup:
+  #   docker:
+  #     - image: circleci/python:3.9.7-buster
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: ~/
+  #     - run:
+  #         name: Install Dependancies
+  #         working_directory: ~/project/.circleci/
+  #         become: True
+  #         command: |
+  #           pip3 install ansible
+  #           pip3 --version
+  #           ansible --version
+  #           # apt install docker
+  #           ls -la
+  #           # cat inventory.txt
+  #     - run:
+  #         name: Run ansible-galaxy to setup netbox
+  #         working_directory: ~/project/.circleci/
+  #         become: True
+  #         command: |
+  #           #ansible-galaxy install lae.netbox
+  #           ansible-galaxy install geerlingguy.postgresql davidwittman.redis lae.netbox
+  #           ls -la ~/.ansible
+  #           ls -la ~/.ansible/roles/lae.netbox/examples/
+  #           cat ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
 
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - .ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
+  #     - persist_to_workspace:
+  #         root: ~/
+  #         paths:
+  #           - .ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml
             
-      - run:
-          name: Ansible playbook
-          working_directory: ~/project/.circleci/
-          command: |
-            ansible-playbook -i 127.0.0.1, ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml -vvv
+  #     - run:
+  #         name: Ansible playbook
+  #         working_directory: ~/project/.circleci/
+  #         command: |
+  #           ansible-playbook -i 127.0.0.1, ~/.ansible/roles/lae.netbox/examples/playbook_single_host_deploy.yml -vvv
               
   Smoke-Test-application:
     docker:
@@ -117,10 +117,10 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        #- Spinup-Test-Python
-       # - AWS-cloudformation-infra
-        - NetboxSetup
-        #-  Linting:
-        #    requires: [AWS-cloudformation-infra]
-        #-  Smoke-Test-application:
-        #    requires: [Linting]
+        - Spinup-Test-Python
+        - AWS-cloudformation-infra
+        # - NetboxSetup
+        -  Linting:
+           requires: [AWS-cloudformation-infra]
+        -  Smoke-Test-application:
+           requires: [Linting]
