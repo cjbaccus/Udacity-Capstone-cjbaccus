@@ -110,9 +110,11 @@ jobs:
           command: pip install cryptocmd pandas
       - run:
           name: test script
-          working_directory: ~/scripts
+          # working_directory: ~/scripts
           command: |
-            python3 cryptotest.py
+            ls -la 
+            pwd
+            # python3 cryptotest.py
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
