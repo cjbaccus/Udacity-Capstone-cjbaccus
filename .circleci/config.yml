@@ -120,7 +120,7 @@ workflows:
         - Spinup-Test-Python
         - AWS-cloudformation-infra
         # - NetboxSetup
-        -  Linting:
+        # -  Linting:
            requires: [AWS-cloudformation-infra]
         -  Smoke-Test-application:
-           requires: [Linting]
+          #  requires: [Linting]
