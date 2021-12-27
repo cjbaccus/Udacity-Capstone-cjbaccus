@@ -110,7 +110,7 @@ jobs:
           command: pip install cryptocmd pandas
       - run:
           name: test script
-          # working_directory: ~/scripts
+          working_directory: ~/scripts
           command: |
             ls -la 
             pwd
