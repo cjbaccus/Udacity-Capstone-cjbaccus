@@ -28,7 +28,7 @@ jobs:
             sudo chmod 755 cryptotest.py
             python3 cryptotest.py
 
-            
+
   # AWS-cloudformation-infra:
   #   docker:
   #     - image: amazon/aws-cli
@@ -120,7 +120,7 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
-        - AWS-cloudformation-infra
+        # - AWS-cloudformation-infra
         # - NetboxSetup
         # -  Linting:
           #  requires: [AWS-cloudformation-infra]
