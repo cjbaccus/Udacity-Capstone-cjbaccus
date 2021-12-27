@@ -112,9 +112,7 @@ jobs:
           name: test script
           working_directory: ~/project/scripts
           command: |
-            ls -la 
-            pwd
-            # python3 cryptotest.py
+            python3 cryptotest.py
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
