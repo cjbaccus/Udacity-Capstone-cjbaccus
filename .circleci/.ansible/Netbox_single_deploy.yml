@@ -61,4 +61,3 @@
 # ansible-playbook -i netbox.example.com, playbook_single_host_deploy.yml
 #
 # Note that for RH systems, PostgreSQL is installed from upstream.
-CircleCI received exit code 0
