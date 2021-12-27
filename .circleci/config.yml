@@ -27,34 +27,36 @@ jobs:
           command: |
             sudo chmod 755 cryptotest.py
             python3 cryptotest.py
-  AWS-cloudformation-infra:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-      - checkout
-      - run:
-          name: Install dependancies
-          command: yum install -y tar gzip
-      - run:
-          name: Ensure cloud backend exists
-          command: |
-            aws cloudformation deploy \
-              --template-file .circleci/files/backend.yml \
-              --tags project="netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --stack-name "netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
-      - run:
-          name: Add to ansible inventory
-          command: |
-            aws ec2 describe-instances \
-              --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --output text >> .circleci/inventory.txt
-              cat .circleci/inventory.txt
 
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/.circleci/inventory.txt
+            
+  # AWS-cloudformation-infra:
+  #   docker:
+  #     - image: amazon/aws-cli
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Install dependancies
+  #         command: yum install -y tar gzip
+  #     - run:
+  #         name: Ensure cloud backend exists
+  #         command: |
+  #           aws cloudformation deploy \
+  #             --template-file .circleci/files/backend.yml \
+  #             --tags project="netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
+  #             --stack-name "netbox-${CIRCLE_WORKFLOW_ID:0:7}" \
+  #             --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
+  #     - run:
+  #         name: Add to ansible inventory
+  #         command: |
+  #           aws ec2 describe-instances \
+  #             --query 'Reservations[*].Instances[*].PublicIpAddress' \
+  #             --output text >> .circleci/inventory.txt
+  #             cat .circleci/inventory.txt
+
+  #     - persist_to_workspace:
+  #         root: ~/
+  #         paths:
+  #           - project/.circleci/inventory.txt
 
   #Linting:
   # NetboxSetup:
@@ -121,6 +123,6 @@ workflows:
         - AWS-cloudformation-infra
         # - NetboxSetup
         # -  Linting:
-           requires: [AWS-cloudformation-infra]
+          #  requires: [AWS-cloudformation-infra]
         -  Smoke-Test-application:
           #  requires: [Linting]
