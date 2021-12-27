@@ -124,5 +124,5 @@ workflows:
         # - NetboxSetup
         # -  Linting:
           #  requires: [AWS-cloudformation-infra]
-        -  Smoke-Test-application:
+        -  Smoke-Test-application
           #  requires: [Linting]
