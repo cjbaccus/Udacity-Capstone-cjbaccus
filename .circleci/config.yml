@@ -12,7 +12,7 @@ parameters:
     default: "91b68998-2d69-4b31-93c2-4f3f42925a80"
 commands:
   destroy-environment:
-    description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
+    description: Destroy cloudformation stacks given a workflow ID.
     steps:
       - run:
           name: Destroy environments
@@ -35,8 +35,6 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             pylint cryptotest.py
-            # pylint --help
-            # python3 -V
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
@@ -62,8 +60,6 @@ jobs:
             pip install --upgrade pip
             pip install awscli
             aws --version
-            # pip install ansible
-            # ansible --version
       - run:
           name: Ensure cloud backend exists
           command: |
@@ -79,19 +75,6 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text >> .circleci/ansible/inventory.txt
               cat .circleci/ansible/inventory.txt
-      # - run:
-      #     name: Check for DecNumbers.txt file
-      #     command: |
-      #       ls -la ~/
-      #       ls -la ~/project/.circleci
-      #       ls -la ~/project/scripts
-
-      # - run:
-      #     name: install Ansible
-      #     command: |
-      #       yum install -y ansible
-      #       ansible --version
-      
       - run:
           name: execute ansible against playbook
           working_directory: .circleci/ansible/
@@ -101,44 +84,11 @@ jobs:
       - save_cache:
           key: build-infra
           paths: [./.circleci/ansible/inventory.txt]
-
-      # - persist_to_workspace:
-      #     root: ~/
-      #     paths:
-      #       - project/.circleci/ansible/inventory.txt
       
       - destroy-environment
 
   #Linting:
-  # configure-infrastructure:
-  #   docker:
-  #     - image: python:3.9.0-alpine
-  #   steps:
-  #     - checkout
-  #     - add_ssh_keys:
-  #         fingerprints: ["ea:0b:03:95:59:96:f5:4b:c2:dd:3c:83:a5:40:35:c6"]
-  #     - restore_cache:
-  #         keys: [build-infra]
-  #     - run:
-  #         name: Install dependancies
-  #         working_directory: ./.circleci/ansible
-  #         command: |
-  #           apk add --upgrade ansible
-  #           ansible --version
-  #           pip3 install --upgrade pip
-  #           pip3 install awscli
-  #           aws --version
-  #     - run:
-  #         name: Configure server
-  #         working_directory: ./.circleci/ansible
-  #         command: |
-  #           pwd
-  #           ls -la 
-  #           # ls -la ../../
-  #           cat inventory.txt
-  #           ansible-playbook -i inventory.txt configure-server.yml -vvv
-  #     - destroy-environment
-
+  
   Smoke-Test-application:
     docker:
       - image: circleci/python:3.9.7-buster
@@ -189,7 +139,5 @@ workflows:
           #  requires: [AWS-cloudformation-infra]
         # -  Smoke-Test-application
           #  requires: [Linting]
-        # - configure-infrastructure:
-        #     requires: [AWS-cloudformation-infra]
         - cleanup:
             requires: [AWS-cloudformation-infra]
