@@ -58,12 +58,12 @@ jobs:
       - run:
           name: Install dependancies
           command: |
-            apk add --update curl
+            apk add --update curl ansible
             pip install --upgrade pip
             pip install awscli
             aws --version
-            pip install ansible
-            ansible --version
+            # pip install ansible
+            # ansible --version
       - run:
           name: Ensure cloud backend exists
           command: |
