@@ -79,6 +79,9 @@ jobs:
             ls -la ~/
             ls -la ~/project/.circleci
             ls -la ~/project/scripts
+      - save_cache:
+          key: build-infra
+          paths: [./circleci/ansible/inventory.txt]
 
       - persist_to_workspace:
           root: ~/
@@ -96,7 +99,7 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["ea:0b:03:95:59:96:f5:4b:c2:dd:3c:83:a5:40:35:c6"]
       - restore_cache:
-          keys: [crypto-app]
+          keys: [crypto-app, build-infra]
       - run:
           name: Install dependancies
           working_directory: ./.circleci/ansible
@@ -113,8 +116,8 @@ jobs:
             pwd
             ls -la 
             ls -la ../../
-            cat inventory
-            ansible-playbook -i inventory configure-server.yml -vvv
+            cat ../inventory.txt
+            ansible-playbook -i ../inventory.txt configure-server.yml -vvv
       - destroy-environment
 
   Smoke-Test-application:
