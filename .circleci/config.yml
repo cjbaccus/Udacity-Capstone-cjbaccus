@@ -141,4 +141,5 @@ workflows:
           #  requires: [AWS-cloudformation-infra]
         # -  Smoke-Test-application
           #  requires: [Linting]
-        - cleanup
+        - cleanup:
+            requires: [AWS-cloudformation-infra]
