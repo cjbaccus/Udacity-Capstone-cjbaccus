@@ -83,7 +83,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/.circleci/inventory.txt
+            - project/..circleci/inventory.txt
       
       - destroy-environment
 
