@@ -77,13 +77,13 @@ jobs:
           name: Check for DecNumbers.txt file
           command: |
             ls -la ~/
-            ls -la ~/project/
+            ls -la ~/project/.circleci
             ls -la ~/project/scripts
 
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/..circleci/inventory.txt
+            - project/.circleci/inventory.txt
       
       - destroy-environment
 
