@@ -28,6 +28,10 @@ jobs:
             sudo chmod 755 cryptotest.py
             python3 cryptotest.py > DecNumbers.txt
             head -n 10 DecNumbers.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ~/project/scripts/DecNumbers.txt
 
 
   AWS-cloudformation-infra:
@@ -53,6 +57,10 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text >> .circleci/inventory.txt
               cat .circleci/inventory.txt
+      - run:
+          name: Check for DecNumbers.txt file
+          command: |
+            ls -la ~/project/scripts/
 
       - persist_to_workspace:
           root: ~/
