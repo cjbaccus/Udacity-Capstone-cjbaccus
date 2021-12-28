@@ -186,4 +186,4 @@ workflows:
         # - configure-infrastructure:
         #     requires: [AWS-cloudformation-infra]
         - cleanup:
-            requires: [configure-infrastructure]
+            requires: [AWS-cloudformation-infra]
