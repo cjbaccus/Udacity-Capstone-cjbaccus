@@ -31,7 +31,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/project/scripts/DecNumbers.txt
+            - project/.circleci/DecNumbers.txt
 
 
   AWS-cloudformation-infra:
@@ -60,7 +60,9 @@ jobs:
       - run:
           name: Check for DecNumbers.txt file
           command: |
-            ls -la ~/project/scripts/
+            ls -la ~/
+            ls -la ~/project/
+            ls -la ~/.circleci/
 
       - persist_to_workspace:
           root: ~/
