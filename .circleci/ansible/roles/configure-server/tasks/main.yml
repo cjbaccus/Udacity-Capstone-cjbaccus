@@ -9,9 +9,9 @@
     apt:
       upgrade: yes
 
-  - name: "install nodejs and npm"
+  - name: "install nginx"
     become: yes
     apt:
-      name: ["nodejs", "npm", "git"]
+      name: ["nginx", "git", ]
       state: latest
       update_cache: yes
