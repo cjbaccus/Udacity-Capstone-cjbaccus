@@ -1,6 +1,6 @@
 version: 2.1
 
-orbs:
+# orbs:
   #slack: circleci/slack@4.1.4
   #aws-cli: circleci/aws-cli@1.3.0
 
@@ -19,14 +19,15 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             pylint cryptotest.py
-            pylint --help
-            python3 -V
+            # pylint --help
+            # python3 -V
       - run:
           name: Get files from scripts folder
           working_directory: ~/project/scripts/
           command: |
             sudo chmod 755 cryptotest.py
-            python3 cryptotest.py
+            python3 cryptotest.py > DecNumbers.txt
+            head -n 10 DecNumbers.txt
 
 
   AWS-cloudformation-infra:
@@ -59,7 +60,7 @@ jobs:
             - project/.circleci/inventory.txt
 
   #Linting:
-  
+
               
   Smoke-Test-application:
     docker:
