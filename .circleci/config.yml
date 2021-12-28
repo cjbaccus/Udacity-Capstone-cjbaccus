@@ -59,6 +59,7 @@ jobs:
           name: Install dependancies
           command: |
             apk add --update curl
+            pip install --upgrade pip
             pip install awscli
             aws --version
             pip install ansible
