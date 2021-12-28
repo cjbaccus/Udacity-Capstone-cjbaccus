@@ -50,14 +50,19 @@ jobs:
 
   AWS-cloudformation-infra:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.9.0-alpine
     steps:
       - checkout
       - restore_cache:
           keys: [crypto-app]
       - run:
           name: Install dependancies
-          command: yum install -y tar gzip
+          command: |
+            apk add --update curl
+            pip install awscli
+            aws --vwesion
+            pip install ansible
+            ansible --version
       - run:
           name: Ensure cloud backend exists
           command: |
@@ -73,19 +78,18 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text >> .circleci/ansible/inventory.txt
               cat .circleci/ansible/inventory.txt
-      - run:
-          name: Check for DecNumbers.txt file
-          command: |
-            ls -la ~/
-            ls -la ~/project/.circleci
-            ls -la ~/project/scripts
+      # - run:
+      #     name: Check for DecNumbers.txt file
+      #     command: |
+      #       ls -la ~/
+      #       ls -la ~/project/.circleci
+      #       ls -la ~/project/scripts
 
-      - run:
-          name: install Ansible
-          command: |
-            yum install ansible
-            # pip3 install ansible
-            ansible --version
+      # - run:
+      #     name: install Ansible
+      #     command: |
+      #       yum install -y ansible
+      #       ansible --version
       
       - run:
           name: execute ansible against playbook
