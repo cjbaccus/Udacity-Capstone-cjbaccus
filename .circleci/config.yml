@@ -30,7 +30,8 @@ jobs:
             head -n 10 DecNumbers.txt
       - persist_to_workspace:
           root: ~/
-
+          paths:
+            - project/scripts/DecNumbers.txt
 
   AWS-cloudformation-infra:
     docker:
