@@ -60,7 +60,7 @@ jobs:
           command: |
             apk add --update curl
             pip install awscli
-            aws --vwesion
+            aws --version
             pip install ansible
             ansible --version
       - run:
