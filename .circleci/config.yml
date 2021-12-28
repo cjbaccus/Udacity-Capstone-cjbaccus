@@ -30,8 +30,6 @@ jobs:
             head -n 10 DecNumbers.txt
       - persist_to_workspace:
           root: ~/
-          paths:
-            - project/.circleci/DecNumbers.txt
 
 
   AWS-cloudformation-infra:
@@ -62,7 +60,7 @@ jobs:
           command: |
             ls -la ~/
             ls -la ~/project/
-            ls -la ~/.circleci/
+            ls -la ~/project/scripts
 
       - persist_to_workspace:
           root: ~/
