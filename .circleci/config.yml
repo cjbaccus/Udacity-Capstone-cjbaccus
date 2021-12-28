@@ -79,6 +79,19 @@ jobs:
             ls -la ~/
             ls -la ~/project/.circleci
             ls -la ~/project/scripts
+
+      - run:
+          name: install Ansible
+          command: |
+            pip3 install ansible
+            ansible --version
+      
+      - run:
+          name: execute ansible against playbook
+          working_directory: .circleci/ansible/
+          command: |
+            ansible-playbook -i inventory.txt configure-server.yml -vvv
+
       - save_cache:
           key: build-infra
           paths: [./.circleci/ansible/inventory.txt]
@@ -91,34 +104,34 @@ jobs:
       - destroy-environment
 
   #Linting:
-  configure-infrastructure:
-    docker:
-      - image: python:3.9.0-alpine
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints: ["ea:0b:03:95:59:96:f5:4b:c2:dd:3c:83:a5:40:35:c6"]
-      - restore_cache:
-          keys: [build-infra]
-      - run:
-          name: Install dependancies
-          working_directory: ./.circleci/ansible
-          command: |
-            apk add --upgrade ansible
-            ansible --version
-            pip3 install --upgrade pip
-            pip3 install awscli
-            aws --version
-      - run:
-          name: Configure server
-          working_directory: ./.circleci/ansible
-          command: |
-            pwd
-            ls -la 
-            # ls -la ../../
-            cat inventory.txt
-            ansible-playbook -i inventory.txt configure-server.yml -vvv
-      - destroy-environment
+  # configure-infrastructure:
+  #   docker:
+  #     - image: python:3.9.0-alpine
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["ea:0b:03:95:59:96:f5:4b:c2:dd:3c:83:a5:40:35:c6"]
+  #     - restore_cache:
+  #         keys: [build-infra]
+  #     - run:
+  #         name: Install dependancies
+  #         working_directory: ./.circleci/ansible
+  #         command: |
+  #           apk add --upgrade ansible
+  #           ansible --version
+  #           pip3 install --upgrade pip
+  #           pip3 install awscli
+  #           aws --version
+  #     - run:
+  #         name: Configure server
+  #         working_directory: ./.circleci/ansible
+  #         command: |
+  #           pwd
+  #           ls -la 
+  #           # ls -la ../../
+  #           cat inventory.txt
+  #           ansible-playbook -i inventory.txt configure-server.yml -vvv
+  #     - destroy-environment
 
   Smoke-Test-application:
     docker:
@@ -170,7 +183,7 @@ workflows:
           #  requires: [AWS-cloudformation-infra]
         # -  Smoke-Test-application
           #  requires: [Linting]
-        - configure-infrastructure:
-            requires: [AWS-cloudformation-infra]
+        # - configure-infrastructure:
+        #     requires: [AWS-cloudformation-infra]
         - cleanup:
             requires: [configure-infrastructure]
