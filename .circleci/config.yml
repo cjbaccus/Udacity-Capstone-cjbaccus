@@ -59,6 +59,7 @@ jobs:
             - project/.circleci/inventory.txt
 
   #Linting:
+  
               
   Smoke-Test-application:
     docker:
