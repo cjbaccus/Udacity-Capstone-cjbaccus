@@ -83,7 +83,8 @@ jobs:
       - run:
           name: install Ansible
           command: |
-            pip3 install ansible
+            yum install ansible
+            # pip3 install ansible
             ansible --version
       
       - run:
