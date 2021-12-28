@@ -9,9 +9,9 @@
     apt:
       upgrade: yes
 
-  - name: "install nginx"
+  - name: "install flask"
     become: yes
     apt:
-      name: ["nginx", "git", ]
+      name: ["python3-pip", "git", "flask"]
       state: latest
       update_cache: yes
