@@ -111,8 +111,9 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             pwd
-            ls -la ../
+            ls -la 
             ls -la ../../
+            cat inventory
             ansible-playbook -i inventory configure-server.yml -vvv
       - destroy-environment
 
