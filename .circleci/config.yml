@@ -81,12 +81,12 @@ jobs:
             ls -la ~/project/scripts
       - save_cache:
           key: build-infra
-          paths: [./circleci/ansible/inventory.txt]
+          paths: [./.circleci/ansible/inventory.txt]
 
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/.circleci/inventory.txt
+      # - persist_to_workspace:
+      #     root: ~/
+      #     paths:
+      #       - project/.circleci/ansible/inventory.txt
       
       - destroy-environment
 
