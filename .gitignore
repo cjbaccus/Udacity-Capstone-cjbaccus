@@ -1,6 +1,7 @@
 *.gem
 *.rbc
 *.cer
+list.txt
 /.config
 /coverage/
 /InstalledFiles

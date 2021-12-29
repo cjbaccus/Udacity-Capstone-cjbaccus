@@ -12,6 +12,6 @@
   - name: "install flask"
     become: yes
     apt:
-      name: ["python3-pip", "git", "flask"]
+      name: ["python3-pip", "git", "python3-flask"]
       state: latest
       update_cache: yes
