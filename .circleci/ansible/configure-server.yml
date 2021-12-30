@@ -21,4 +21,5 @@
 
   roles:
     - configure-server
+    - dockerrun
   
