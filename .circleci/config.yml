@@ -29,19 +29,19 @@ jobs:
       - run:
           name: Install cryptocmd application
           working_directory: ~/
-          command: pip install cryptocmd && pip install pandas && pip install pylint && pip install flask && pip install pandas
+          command: pip install cryptocmd && pip install pandas && pip install pylint && pip install flask
       - run:
           name: Lint the code
           working_directory: ~/project/scripts/
           command: |
             pylint cryptotest.py
-      - run:
-          name: Get files from scripts folder
-          working_directory: ~/project/scripts/
-          command: |
-            sudo chmod 755 cryptotest.py
-            python3 cryptotest.py > DecNumbers.txt
-            head -n 10 DecNumbers.txt
+      # - run:
+      #     name: Get files from scripts folder
+      #     working_directory: ~/project/scripts/
+      #     command: |
+      #       sudo chmod 755 cryptotest.py
+      #       python3 cryptotest.py > DecNumbers.txt
+      #       head -n 10 DecNumbers.txt
       - save_cache:
           paths: [scripts]
           key: crypto-app
