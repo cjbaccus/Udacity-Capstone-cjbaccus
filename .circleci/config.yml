@@ -96,7 +96,7 @@ jobs:
           keys: [crypto-app]
       - run:
           name: install hadolint
-          working_directory: ~/.circleci/scripts
+          working_directory: ~/project/scripts
           command: |
             ls -la
             cat Makefile | grep install
