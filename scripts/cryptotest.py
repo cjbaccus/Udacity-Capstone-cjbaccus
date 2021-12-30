@@ -5,8 +5,8 @@
 from cryptocmd import CmcScraper
 import pandas as pd
 from flask import Flask, request, jsonify
-from flask.logging import create_logger
-import logging
+# from flask.logging import create_logger
+# import logging
 
 # initialise scraper without time interval
 scraper = CmcScraper("HNT", "23-09-2021", "27-12-2021")
