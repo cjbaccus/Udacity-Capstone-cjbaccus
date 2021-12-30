@@ -32,9 +32,9 @@ LOG.setLevel(logging.INFO)
 
 @app.route("/")
 def home():
-    html = "<h3>Price of Helium from September 2021 - December 2021 </h3>" 
+    html = "<h3>Price of Helium from September 2021 - December 2021 </h3>"
     data2html = "{{ df }}"
     return html.format(format)
-    return data2html.format(format) 
+    return data2html.format(format)
 
     app.run(host='0.0.0.0', port=80, debug=True) # specify port=80
