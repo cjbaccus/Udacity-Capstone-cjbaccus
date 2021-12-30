@@ -6,9 +6,11 @@
 #       state: latest
 #       update_cache: yes
   - name: "execute make dockerfile"
+  - restore_cache:
+        keys: [crypto-app]
     become: yes
+    working_directory: ~/project/scripts
     command: |
-        pwd && ls -la && ls -la ../
         make setup
         make install
         make lint
