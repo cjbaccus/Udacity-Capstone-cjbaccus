@@ -110,7 +110,7 @@ jobs:
       - run:
           name: install dependancies
           working_directory: ~/
-          command: pip install cryptocmd flask
+          command: pip install cryptocmd flask pandas
       - run:
           name: test script
           working_directory: ~/project/scripts
