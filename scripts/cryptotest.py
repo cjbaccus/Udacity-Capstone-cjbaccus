@@ -39,5 +39,3 @@ def home():
     #return data2html.format(format)
 
 app.run(host='0.0.0.0', port=80, debug=True) # specify port=80
-
- 
