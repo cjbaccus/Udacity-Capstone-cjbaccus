@@ -119,6 +119,7 @@ jobs:
 
       - run:
           name: Check results
+          working_directory: ~/project/scripts
           command: |
             cat results.txt
 
