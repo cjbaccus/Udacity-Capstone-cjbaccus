@@ -3,7 +3,7 @@
 ''' This will return the current values of helium blockchain based on daily market values'''
 
 from cryptocmd import CmcScraper
-import pandas as pd
+# import pandas as pd
 from flask import Flask, request, jsonify
 # from flask.logging import create_logger
 # import logging
@@ -27,8 +27,8 @@ print(df)
 
 
 app = Flask(__name__)
-LOG = create_logger(app)
-LOG.setLevel(logging.INFO)
+# LOG = create_logger(app)
+# LOG.setLevel(logging.INFO)
 
 @app.route("/")
 def home():
@@ -38,3 +38,4 @@ def home():
     return data2html.format(format)
 
     app.run(host='0.0.0.0', port=80, debug=True) # specify port=80
+ 
