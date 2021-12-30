@@ -117,6 +117,7 @@ jobs:
           command: |
             python3 cryptotest.py > result.txt
             cat result.txt
+            return 1
       - run:
           name: site smoke test.
           command: |
