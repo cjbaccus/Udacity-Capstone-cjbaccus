@@ -146,9 +146,9 @@ workflows:
         - Spinup-Test-Python
         # - AWS-cloudformation-infra:
         #     requires: [Spinup-Test-Python]
-        # -  Linting:
+        -  Linting
           #  requires: [AWS-cloudformation-infra]
-        -  Smoke-Test-application
-           requires: [Linting]
+        - Smoke-Test-application:
+            requires: [Linting]
         - cleanup:
             requires: [AWS-cloudformation-infra]
