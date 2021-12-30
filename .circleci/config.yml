@@ -115,8 +115,7 @@ jobs:
           name: test script
           working_directory: ~/project/scripts
           command: |
-            python3 cryptotest.py > result.txt
-            cat result.txt
+            python3 cryptotest.py
             return 1
       - run:
           name: site smoke test.
