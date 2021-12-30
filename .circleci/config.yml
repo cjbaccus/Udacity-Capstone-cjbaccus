@@ -92,6 +92,8 @@ jobs:
       - image: circleci/python:3.9.7-buster
     steps:
       - checkout
+      - restore_cache:
+          keys: [crypto-app]
       - run:
           name: install hadolint
           working_directory: ~/scripts
@@ -148,8 +150,8 @@ workflows:
         - Spinup-Test-Python
         # - AWS-cloudformation-infra:
         #     requires: [Spinup-Test-Python]
-        -  Linting
-          #  requires: [AWS-cloudformation-infra]
+        -  Linting:
+            requires: [Spinup-Test-Python]
         - Smoke-Test-application:
             requires: [Linting]
         # - cleanup:
