@@ -32,7 +32,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    html = "<h3>Price of Helium from September 2021 - December 2021 </h3>"
+    html = "<h3>Price of Helium from September 2021 - December 2021 </h3><h4>{{ df }}<h4>"
     # data2html = "{{ df }}"
     return html.format(format)
     #return data2html.format(format)
