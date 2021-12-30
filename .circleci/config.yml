@@ -116,7 +116,7 @@ jobs:
           working_directory: ~/project/scripts
           command: |
             python3 cryptotest.py
-            return 1
+            retun 0
       - run:
           name: site smoke test.
           command: |
