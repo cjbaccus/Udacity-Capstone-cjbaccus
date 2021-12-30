@@ -98,8 +98,7 @@ jobs:
           name: install hadolint
           working_directory: ~/project/scripts
           command: |
-            ls -la
-            cat Makefile | grep install
+            make setup
             make install
             make lint
   
