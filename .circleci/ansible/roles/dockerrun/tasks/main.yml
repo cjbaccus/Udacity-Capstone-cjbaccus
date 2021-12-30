@@ -8,8 +8,9 @@
   - name: "execute make dockerfile"
     become: yes
     command: |
+        make setup
         make install
         make lint
-        # make dockerflask
+        make dockerflask
         # make backdocker
         # make kubernetescluster
