@@ -26,9 +26,9 @@ test:
 
 lint:
 	./hadolint Dockerfile
-	pylint --disable=R,C,W1203 app.py
+	pylint --disable=R,C,W1203 cryptotest.py
 
 dockerflask:
 	bash rundocker.sh && docker_push.sh
-		
+
 all: install lint test
