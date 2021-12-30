@@ -115,7 +115,18 @@ jobs:
           name: test script
           working_directory: ~/project/scripts
           command: |
-            python3 cryptotest.py
+            python3 cryptotest.py > result.txt
+            cat result.txt
+      - run:
+          name: site smoke test.
+          command: |
+            if curl -s https://127.0.0.1/
+            then
+              return 1
+            else
+              return 0
+            fi
+            echo "https://127.0.0.1/"
 
   cleanup:
     docker:
