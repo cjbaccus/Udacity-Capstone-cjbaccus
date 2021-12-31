@@ -35,6 +35,13 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             pylint cryptotest.py
+
+      - run:
+          name: make archive to copy to production
+          command: |
+            tar -C ~/project/scripts/ -czvf artifact.tar.gz .
+            cp -p artifact.tar.gz ~/project/backend_artifact.tar.gz
+            ls -alrt
       - save_cache:
           paths: [scripts]
           key: crypto-app
@@ -87,6 +94,10 @@ jobs:
       - checkout
       - restore_cache:
           keys: [crypto-app]
+      # - run:
+      #     name: remove any old docker version
+      #     command: |
+
       - run:
           name: install hadolint
           working_directory: ~/project/scripts
@@ -94,8 +105,8 @@ jobs:
             make setup
             make install
             make lint
-            make dockerflask
-            make kubernetesdeploy
+            # make dockerflask
+            # make kubernetesdeploy
   
   Smoke-Test-application:
     docker:
