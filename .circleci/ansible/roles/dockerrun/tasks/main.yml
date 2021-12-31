@@ -6,10 +6,6 @@
 #       state: latest
 #       update_cache: yes
 
-        - name: "restore cache"
-        - restore_cache:
-            keys: [crypto-app]
-
         - name: "execute make scripts"
           become: yes
           command: |

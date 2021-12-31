@@ -31,4 +31,7 @@ lint:
 dockerflask:
 	bash rundocker.sh && docker_push.sh
 
+kubernetesdeploy:
+	bash kubernetesDeploy.sh
+
 all: install lint test
