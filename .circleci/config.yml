@@ -40,7 +40,7 @@ jobs:
           name: make archive to copy to production
           command: |
             tar -C ~/project/scripts/ -czvf archive.tar.gz .
-            cp -p artifact.tar.gz ~/project/archive.tar.gz
+            cp -p archive.tar.gz ~/project/archive.tar.gz
             ls -alrt
       - save_cache:
           paths: [scripts]
