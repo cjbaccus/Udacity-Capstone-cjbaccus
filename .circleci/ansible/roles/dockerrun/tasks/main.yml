@@ -7,6 +7,7 @@
 #       update_cache: yes
 
     - name: Extract archive.tar.gz
+      become: yes
       unarchive:
         src: /home/ubuntu/archive.tar.gz
         dest: /home/ubuntu/
