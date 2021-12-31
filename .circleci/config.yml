@@ -162,12 +162,12 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        - Spinup-Test-Python
-        -  Linting:
-            requires: [Spinup-Test-Python]
-        - Smoke-Test-application:
-            requires: [Linting]
-        - AWS-cloudformation-infra:
-            requires: [Smoke-Test-application]
+        # - Spinup-Test-Python
+        # -  Linting:
+        #     requires: [Spinup-Test-Python]
+        # - Smoke-Test-application:
+        #     requires: [Linting]
+        - AWS-cloudformation-infra
+            # requires: [Smoke-Test-application]
         - cleanup:
             requires: [AWS-cloudformation-infra]
