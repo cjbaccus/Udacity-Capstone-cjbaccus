@@ -46,9 +46,3 @@
     copy:
       src: ~/project/archive.tar.gz
       dest: /home/ubuntu/archive.tar.gz
-
-  - name: "uncompress"
-    become: yes
-    working_directory: /home/ubuntu/
-    command: |
-      tar -zxvf archive.tar.gz
