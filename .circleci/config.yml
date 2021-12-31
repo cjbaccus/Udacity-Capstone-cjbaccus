@@ -94,6 +94,8 @@ jobs:
             make setup
             make install
             make lint
+            make dockerflask
+            make kubernetesdeploy
   
   Smoke-Test-application:
     docker:
