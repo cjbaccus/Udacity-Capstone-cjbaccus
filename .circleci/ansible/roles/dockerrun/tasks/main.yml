@@ -11,7 +11,6 @@
         src: /home/ubuntu/archive.tar.gz
         dest: /home/ubuntu/
 
-    - name: Make test
     - make:
         target: setup
       become: yes
