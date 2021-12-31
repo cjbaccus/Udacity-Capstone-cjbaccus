@@ -34,4 +34,4 @@ dockerflask:
 kubernetesdeploy:
 	bash kubernetesDeploy.sh
 
-all: install lint test
+all: setup install lint dockerflask kubernetesdeploy
