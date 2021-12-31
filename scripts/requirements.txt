@@ -2,5 +2,4 @@ Flask==1.0.2
 Jinja2==2.10.3
 MarkupSafe==1.1.1
 python-dateutil==2.8.0
-docker-ce
 python3-kubernetes
