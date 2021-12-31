@@ -45,4 +45,4 @@
     become: yes
     copy:
       src: ~/project/scripts/archive.tar.gz
-      dest: ~/home/ubuntu/project/archive.tar.gz
+      dest: /home/ubuntu/project/archive.tar.gz
