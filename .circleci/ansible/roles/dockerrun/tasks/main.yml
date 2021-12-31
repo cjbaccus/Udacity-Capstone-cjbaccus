@@ -12,6 +12,12 @@
         src: /home/ubuntu/archive.tar.gz
         dest: /home/ubuntu/
 
+    - name: Test for file
+      become: yes
+      raw: ls -la
+      
     - make:
+        chdir: /home/ubuntu/
         target: setup
+        file: /home/ubuntu/Makefile
       become: yes

@@ -46,3 +46,7 @@
     copy:
       src: ~/project/archive.tar.gz
       dest: /home/ubuntu/archive.tar.gz
+
+  - name: "verify file"
+    become: yes
+    raw: ls -la && ls -la /home/ubuntu/
