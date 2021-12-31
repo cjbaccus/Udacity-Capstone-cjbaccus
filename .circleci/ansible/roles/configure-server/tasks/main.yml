@@ -49,6 +49,7 @@
       owner: ubuntu
       group: ubuntu
       mode: 0644
+      
   - name: "verify file"
     become: yes
     raw: ls -la && ls -la /home/ubuntu/
