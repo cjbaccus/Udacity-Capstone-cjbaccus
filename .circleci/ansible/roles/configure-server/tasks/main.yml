@@ -44,5 +44,5 @@
   - name: "copy scripts over to server"
     become: yes
     copy:
-      src: ~/project/archive.tar.gz
-      dest: ~/home/ubuntu/project/
+      src: ~/project/script/archive.tar.gz
+      dest: ~/home/ubuntu/project/archive.tar.gz
