@@ -35,15 +35,8 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             pylint cryptotest.py
-
-      - run:
-          name: make archive to copy to production
-          command: |
-            tar -C ~/project/scripts/ -czvf archive.tar.gz .
-            # cp -p archive.tar.gz ~/project/archive.tar.gz
-            ls -alrt
       - save_cache:
-          paths: [scripts/archive.tar.gz]
+          paths: [scripts]
           key: crypto-app
 
   AWS-cloudformation-infra:
@@ -59,6 +52,11 @@ jobs:
           command: |
             ls -lah
             pwd
+      - run:
+          name: make archive to copy to production
+          command: |
+            tar -C ~/project/scripts/ -czvf archive.tar.gz .
+            ls -alrt
       - run:
           name: Install dependancies
           command: |
