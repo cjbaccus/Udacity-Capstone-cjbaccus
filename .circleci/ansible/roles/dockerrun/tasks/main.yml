@@ -5,13 +5,17 @@
 #       name: ["python3-pip", "docker.io", "python3-kubernetes", "git", "python3-flask"]
 #       state: latest
 #       update_cache: yes
-  - name: "execute make dockerfile"
-  - restore_cache:
-        keys: [crypto-app]
-    become: yes
-    working_directory: ~/project/scripts
-    command: |
-        make setup
-        make install
-        make lint
-        make dockerflask
+
+        - name: "restore cache"
+        - restore_cache:
+            keys: [crypto-app]
+
+        - name: "execute make scripts"
+          become: yes
+          command: |
+            cd ~/project/scripts/
+            ls -la
+            # make setup
+            # make install
+            # make lint
+            # make dockerflask
