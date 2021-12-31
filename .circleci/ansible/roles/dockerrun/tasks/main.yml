@@ -16,3 +16,11 @@
         target: lint
         file: /home/ubuntu/Makefile
       become: yes
+
+    - make:
+        chdir: /home/ubuntu/
+        target: dockerflask
+        file: /home/ubuntu/Makefile
+      become: yes
+
+
