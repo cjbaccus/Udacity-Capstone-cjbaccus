@@ -4,9 +4,15 @@
         target: setup
         file: /home/ubuntu/Makefile
       become: yes
-      
+
     - make:
         chdir: /home/ubuntu/
         target: install
+        file: /home/ubuntu/Makefile
+      become: yes
+
+    - make:
+        chdir: /home/ubuntu/
+        target: lint
         file: /home/ubuntu/Makefile
       become: yes
