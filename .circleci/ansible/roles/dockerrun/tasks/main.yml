@@ -8,5 +8,7 @@
 
         - name: "execute make scripts"
           become: yes
+          working_directory: /home/ubuntu/
           command: |
             ls -la
+            
