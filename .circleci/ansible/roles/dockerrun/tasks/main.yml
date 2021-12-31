@@ -9,9 +9,4 @@
         - name: "execute make scripts"
           become: yes
           command: |
-            cd ~/project/scripts/
             ls -la
-            # make setup
-            # make install
-            # make lint
-            # make dockerflask

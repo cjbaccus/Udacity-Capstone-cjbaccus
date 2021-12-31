@@ -9,7 +9,7 @@ dockerpath="cjbaccus/udacity_capstone"
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl create deployment myCryptoFlask --image=docker.io/${dockerpath}:latest --port=80
+kubectl create deployment mycryptoflask --image=docker.io/${dockerpath}:latest --port=80
 echo "sleeping for 60 seconds, while docker spins up..."
 sleep 60
 

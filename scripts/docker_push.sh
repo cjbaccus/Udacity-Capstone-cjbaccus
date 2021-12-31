@@ -12,7 +12,7 @@ dockerpath="cjbaccus/udacity_capstone"
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login &&\
-    docker image tag myCryptoFlask $dockerpath
+    docker image tag mycryptoflask $dockerpath
 
 # Step 3:
 # Push image to a docker repository
