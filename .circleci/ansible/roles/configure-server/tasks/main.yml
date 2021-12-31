@@ -47,10 +47,11 @@
       src: ~/project/archive.tar.gz
       dest: /home/ubuntu/archive.tar.gz
   - file:
-      path: /home/ubuntu/archive.tar.gz
-      owner: ubuntu
-      group: ubuntu
-      mode: 0777
+    become: yes
+    path: /home/ubuntu/archive.tar.gz
+    owner: ubuntu
+    group: ubuntu
+    mode: 0777
 
   - name: "verify file"
     become: yes
