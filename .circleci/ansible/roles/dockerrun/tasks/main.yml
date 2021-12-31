@@ -6,10 +6,12 @@
 #       state: latest
 #       update_cache: yes
 
-        - name: "execute make scripts"
-          become: yes
-          command: |
-            ls -la
-            cd /home/ubuntu/
-            tar -zxvf archive.tar.gz 
-            ls -la
+    - name: Extract archive.tar.gz
+      unarchive:
+        src: /home/ubuntu/archive.tar.gz
+        dest: /home/ubuntu/
+
+    - name: Make test
+    - make:
+        target: setup
+      become: yes
