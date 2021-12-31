@@ -43,7 +43,7 @@ jobs:
             # cp -p archive.tar.gz ~/project/archive.tar.gz
             ls -alrt
       - save_cache:
-          paths: [scripts]
+          paths: [scripts/archive.tar.gz]
           key: crypto-app
 
   AWS-cloudformation-infra:
@@ -53,6 +53,12 @@ jobs:
       - checkout
       - restore_cache:
           keys: [crypto-app]
+      - run:
+          name: Check for archive
+          working_directory: ~/project/scripts/
+          command: |
+            ls -lah
+            pwd
       - run:
           name: Install dependancies
           command: |
