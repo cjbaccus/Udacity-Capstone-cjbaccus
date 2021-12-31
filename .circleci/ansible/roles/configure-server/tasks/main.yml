@@ -41,10 +41,64 @@
       name: ["docker-ce", "docker-ce-cli", "containerd.io"] 
       state: latest
 
-  - name: "copy scripts over to server"
+  - name: "copy Makefile to server"
     become: yes
     copy:
       src: ~/project/scripts/Makefile
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy Dockerfile to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/Dockerfile
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy requirements to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/requirements.txt
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy rundocker to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/rundocker.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy dockerpush to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/docker_push.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy kubernetesdeploy to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/kubernetesDeploy.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy cryptotest to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/cryptotest.py
       dest: /home/ubuntu/
       owner: ubuntu
       group: ubuntu
