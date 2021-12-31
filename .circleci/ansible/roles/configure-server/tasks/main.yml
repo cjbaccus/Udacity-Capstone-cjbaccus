@@ -44,7 +44,7 @@
   - name: "copy scripts over to server"
     become: yes
     copy:
-      src: ~/project/scripts/*
+      src: ~/project/scripts/Makefile
       dest: /home/ubuntu/
       owner: ubuntu
       group: ubuntu
