@@ -39,8 +39,8 @@ jobs:
       - run:
           name: make archive to copy to production
           command: |
-            tar -C ~/project/scripts/ -czvf artifact.tar.gz .
-            cp -p artifact.tar.gz ~/project/backend_artifact.tar.gz
+            tar -C ~/project/scripts/ -czvf archive.tar.gz .
+            cp -p artifact.tar.gz ~/project/archive.tar.gz
             ls -alrt
       - save_cache:
           paths: [scripts]
