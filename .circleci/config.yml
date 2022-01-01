@@ -52,7 +52,7 @@ jobs:
           name: Build docker image
           command: | 
             . ~/.devops/bin/activate
-            make test
+            make dockerflask
       # - docker/check
       # - run:
       #     name: Push docker image
