@@ -2,7 +2,7 @@
 # This file tags and uploads an image to Docker Hub
 
 # Assumes that an image is built via `run_docker.sh`
-
+docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
