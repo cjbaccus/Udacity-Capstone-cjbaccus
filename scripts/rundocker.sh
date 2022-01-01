@@ -5,7 +5,7 @@
 # docker login
 # Step 1:
 # Build image and add a descriptive tag
-docker build . --tag=cjbaccus/cjbaccus-capstone:1
+docker build .
 
 # docker build . --tag ${DOCKER_PATH}:${CURRENT}
 

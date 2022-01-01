@@ -30,10 +30,7 @@ lint:
 
 
 dockerflask:
-	ls -la 
-	ls -la ~/
-	ls -la ~/project/scripts/
-	bash ~/scripts/rundocker.sh
+	./rundocker.sh
 
 dockerpush:
 	bash docker_push.sh
