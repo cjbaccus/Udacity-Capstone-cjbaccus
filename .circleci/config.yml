@@ -31,7 +31,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependancies-{{ checksum "requirements.txt" }}
+            - v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
             - v1-dependancies-
       - run:
           name: Install cryptocmd application
@@ -60,8 +60,8 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
-          key: v1-dependancies-{{ checksum "requirements.txt" }}
+            - ./devops
+          key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
 
   Linting:
     docker:
