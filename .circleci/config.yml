@@ -117,12 +117,12 @@ jobs:
       - run:
           name: install dependancies
           working_directory: ~/
-          command: pip install cryptocmd nginx pandas 
+          command: pip install cryptocmd pandas 
       - run:
-          name: test script
+          name: install nginx
           working_directory: ~/project/scripts
           command: |
-            python3 cryptotest.py > results.txt
+            apk add --update nginx
 
       - run:
           name: Check results
