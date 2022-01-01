@@ -233,6 +233,6 @@ workflows:
         - AWS-cloudformation-infra    
             # requires: [Smoke-Test-application]
         - deploy_to_k8s:
-            requires: [AWS-cloudformaion-infra]
+            requires: [AWS-cloudformation-infra]
         - cleanup:
             requires: [AWS-cloudformation-infra]
