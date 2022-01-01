@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Build docker image
           command: | 
-            make dockerbuild
+            make dockerflask
       # - docker/check
       - run:
           name: Push docker image
