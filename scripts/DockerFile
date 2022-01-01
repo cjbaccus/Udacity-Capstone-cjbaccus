@@ -1,6 +1,5 @@
-#FROM python:3.9.7-buster
-FROM ubuntu/nginx:1.18-21.10_beta
-#FROM nginx
+FROM python:3.9.7-buster
+
 
 ## Step 1:
 # Create a working directory
@@ -8,9 +7,8 @@ WORKDIR /app
 
 ## Step 2:
 # Copy source code to working directory
-COPY . cryptotest.py /app/
+COPY . app.py /app/
 
-COPY results.txt /usr/www/inex.html
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
@@ -24,5 +22,5 @@ EXPOSE 80
 ## Step 5:
 # Run app.py at container launch
 #CMD ["python", "app.py"]
-CMD ["python", "cryptotest.py"]
+CMD ["python", "app.py"]
 

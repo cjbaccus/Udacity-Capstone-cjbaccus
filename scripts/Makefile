@@ -29,10 +29,10 @@ lint:
 	# pylint --disable=R,C,W1203 cryptotest.py
 
 dockerflask:
-	./scripts/dockerflask.sh
-	
+	bash rundocker.sh
+
 dockerpush:
-	./scripts/docker_push.sh
+	bash docker_push.sh
 
 kubernetesdeploy:
 	bash kubernetesDeploy.sh
