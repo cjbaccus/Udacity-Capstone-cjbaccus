@@ -192,7 +192,7 @@ jobs:
           paths:
             - ./devops
           key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
-          
+
       - destroy-environment
 
   cleanup:
@@ -224,7 +224,7 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        # - Spinup-Test-Python
+        - Spinup-Test-Python
         # -  Linting:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
