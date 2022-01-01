@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # This tags and uploads an image to Docker Hub
-
+. ./config.txt
 # Step 1:
 # This is your Docker ID/path
 # dockerpath=<>
-dockerpath="cjbaccus/udacity_capstone"
+dockerpath=${DOCKER_PATH}:${CURRENT}
 
 # Step 2
 # Run the Docker Hub container with kubernetes
