@@ -85,14 +85,14 @@ jobs:
           name: Deploy green apps into EKS
           become: yes
           command: |
-            sudo ./deployGreenApp.sh
+            sudo sh deployGreenApp.sh
             kubectl get pods
       - run:
           name: Remove green apps
           when: on_fail
           become: yes
           command: |
-            sudo ./delete_green_app.sh
+            sudo sh delete_green_app.sh
       - save_cache:
           paths:
             - ./devops
