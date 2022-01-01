@@ -132,19 +132,7 @@ jobs:
       - run:
           name: copy to nginx directory
           command: |
-            sudo cat results.txt > /etc/nginx/index.html
-            sudo ls -la /var/www/html/
-      - run:
-          name: curl local for results
-          command: |
-            URL="http://127.0.0.1/"
-            echo $URL
-            if curl -s ${URL} | grep "Market"
-            then
-              return 0
-            else 
-              return 0
-            fi
+            cat results.txt
 
   cleanup:
     docker:
