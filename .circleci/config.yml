@@ -85,14 +85,14 @@ jobs:
           name: Deploy green apps into EKS
           become: yes
           command: |
-            scripts/deployGreenApp.sh
+            sudo ./deployGreenApp.sh
             kubectl get pods
       - run:
           name: Remove green apps
           when: on_fail
           become: yes
           command: |
-            scripts/delete_green_app.sh
+            sudo ./delete_green_app.sh
       - save_cache:
           paths:
             - ./devops
@@ -235,6 +235,6 @@ workflows:
         # - AWS-cloudformation-infra    
         #     # requires: [Smoke-Test-application]
         - deploy_to_k8s
-            # requires: [AWS-cloudformation-infra]
+            requires: [Spinup-Test-Python]
         # - cleanup:
         #     requires: [AWS-cloudformation-infra]
