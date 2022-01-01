@@ -131,7 +131,14 @@
       group: ubuntu
       mode: 0777
       
-      
+  - name: "copy delete_green_app.sh to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/delete_green_app.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
 
   - name: "verify file"
     become: yes

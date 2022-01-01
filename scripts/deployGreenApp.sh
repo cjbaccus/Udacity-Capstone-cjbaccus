@@ -1,5 +1,5 @@
 #!/bin/sh
 
 . ./config.txt
-kubectl create deployment get-ip-${CURRENT} --image=docker.io/${DOCKER_PATH}:${CURRENT} --replicas=2 --port=80
-kubectl rollout status deployment/get-ip-${CURRENT} # Health check
+kubectl create deployment crypto-${CURRENT} --image=docker.io/${DOCKER_PATH}:${CURRENT} --port=80
+kubectl rollout status deployment/crypto-${CURRENT} # Health check
