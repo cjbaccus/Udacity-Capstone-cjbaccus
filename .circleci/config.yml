@@ -131,6 +131,7 @@ jobs:
             python cryptotest.py > results.txt
       - run:
           name: copy to nginx directory
+          working_directory: ~/project/scripts          
           command: |
             cat results.txt
 
