@@ -1,5 +1,5 @@
-#FROM python:3.9.7-buster
-FROM ubuntu:nginx
+FROM python:3.9.7-buster
+#FROM ubuntu/nginx:1.18-21.10_beta
 
 ## Step 1:
 # Create a working directory
