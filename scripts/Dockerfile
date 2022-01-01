@@ -1,4 +1,4 @@
-FROM python:3.9.7-buster
+FROM python:3.8.10-alpine3.14
 
 
 ## Step 1:

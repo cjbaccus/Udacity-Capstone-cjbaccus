@@ -11,7 +11,7 @@ docker build . --tag ${DOCKER_PATH}:${CURRENT}
 
 # Step 2: 
 # List docker images
-
+docker login
 # docker image ls
 
 # Step 3: 
@@ -19,3 +19,4 @@ docker build . --tag ${DOCKER_PATH}:${CURRENT}
 # docker run -p 80:80 mycryptoflask
 # docker run -p 80:80 $DOCKER_USER/cjbaccus-capstone:latest
 # docker image push cjbaccus/cjbaccus-capstone:latest
+docker push ${DOCKER_PATH}:${LAST}
