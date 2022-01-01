@@ -29,4 +29,4 @@ kubectl get pods
 
 
 POD_NAME=`kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'`
-kubectl port-forward $POD_NAME 8080:80
+kubectl port-forward $POD_NAME 8080:8080
