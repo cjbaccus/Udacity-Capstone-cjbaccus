@@ -51,6 +51,7 @@ jobs:
       - run:
           name: Build docker image
           command: | 
+            . ~/.devops/bin/activate
             make dockerflask
       # - docker/check
       - run:
