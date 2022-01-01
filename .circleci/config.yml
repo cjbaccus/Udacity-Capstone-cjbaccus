@@ -79,21 +79,13 @@ jobs:
       - run:
           name: Deploy green apps into EKS
           command: |
-            bin/deploy_green_app.sh
+            scripts/deployGreenApp.sh
             kubectl get pods
-      - run:
-          name: Deploy green load balancer 
-          command: |
-            bin/deploy_green_lb.sh > ~/project/green_lb_url.txt
       - run:
           name: Remove green apps
           when: on_fail
           command: |
             bin/del_current_app.sh
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/green_lb_url.txt
  
   Linting:
     docker:
