@@ -132,8 +132,8 @@ jobs:
       - run:
           name: copy to nginx directory
           command: |
-            # sudo cat results.txt >> /etc/nginx/sites-enabled/default && sudo service nginx restart
-            sudo ls -la /etc/nginx/sites-enabled/
+            # sudo cat results.txt >> /data/www/inex.html && sudo service nginx restart
+            sudo ls -la /data/www/
       - run:
           name: curl local for results
           command: |
