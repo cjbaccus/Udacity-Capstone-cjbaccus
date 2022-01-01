@@ -1,4 +1,5 @@
-FROM ubuntu/nginx
+#FROM python:3.9.7-buster
+FROM ubuntu:nginx
 
 ## Step 1:
 # Create a working directory
@@ -8,7 +9,7 @@ WORKDIR /app
 # Copy source code to working directory
 COPY . cryptotest.py /app/
 
-#RUN apt install python3-pip
+RUN apt install nginx
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
