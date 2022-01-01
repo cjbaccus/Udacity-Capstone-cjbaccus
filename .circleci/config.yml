@@ -132,14 +132,14 @@ jobs:
       - run:
           name: copy to nginx directory
           command: |
-            # sudo cat results.txt >> /etc/nginx/sites-available/default && sudo service nginx restart
-            sudo ls -la /etc/nginx/
+            # sudo cat results.txt >> /etc/nginx/sites-enabled/default && sudo service nginx restart
+            sudo ls -la /etc/nginx/sites-enabled/
       - run:
           name: curl local for results
           command: |
             URL="http://127.0.0.1/"
             echo $URL
-            if curl -s ${URL} | grep "Welcome"
+            if curl -s ${URL} | grep "Market"
             then
               return 1
             else 
