@@ -26,7 +26,7 @@ test:
 
 lint:
 	./hadolint DockerFile
-	pylint --disable=R,C,W1203 cryptotest.py
+	# pylint --disable=R,C,W1203 cryptotest.py
 
 dockerflask:
 	./rundocker.sh
