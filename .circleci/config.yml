@@ -115,8 +115,6 @@ jobs:
             make setup
             make install
             make lint
-            # make dockerflask
-            # make kubernetesdeploy
   
   Smoke-Test-application:
     docker:
@@ -230,8 +228,8 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
-        # -  Linting:
-        #     requires: [Spinup-Test-Python]
+        -  Linting:
+            requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
         # - AWS-cloudformation-infra    
