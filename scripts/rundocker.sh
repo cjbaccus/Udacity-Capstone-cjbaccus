@@ -5,7 +5,7 @@
 # docker login
 # Step 1:
 # Build image and add a descriptive tag
-docker build .
+docker build . -t ${DOCKER_USER}/${DOCKER_PATHP}:${CURRENT} -f Dockerfile
 
 # docker build . --tag ${DOCKER_PATH}:${CURRENT}
 
