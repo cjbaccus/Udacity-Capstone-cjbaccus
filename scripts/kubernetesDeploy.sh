@@ -9,7 +9,7 @@ dockerpath=${DOCKER_PATH}:${CURRENT}
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl create deployment mycryptoflask --image=docker.io/${dockerpath}:latest --port=80
+kubectl create deployment cjbaccus/capstone --image=docker.io/${dockerpath}:latest --port=8080
 echo "sleeping for 60 seconds, while docker spins up..."
 sleep 60
 
@@ -29,4 +29,4 @@ kubectl get pods
 
 
 POD_NAME=`kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'`
-kubectl port-forward $POD_NAME 8000:80
+kubectl port-forward $POD_NAME 8080:80
