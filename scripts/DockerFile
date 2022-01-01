@@ -10,8 +10,7 @@ WORKDIR /app
 # Copy source code to working directory
 COPY . cryptotest.py /app/
 
-RUN python cryptotest.py > /usr/share/nginx/html/index.html
-RUN service nginx start
+COPY results.txt /usr/www/inex.html
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
