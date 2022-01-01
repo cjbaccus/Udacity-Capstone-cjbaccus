@@ -229,7 +229,7 @@ workflows:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
-        - AWS-cloudformation-infra:
-            requires: [Smoke-Test-application]
+        - AWS-cloudformation-infra    
+            # requires: [Smoke-Test-application]
         - cleanup:
             requires: [AWS-cloudformation-infra]
