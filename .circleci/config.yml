@@ -117,7 +117,7 @@ jobs:
       - run:
           name: install dependancies
           working_directory: ~/
-          command: pip install cryptocmd flask pandas 
+          command: pip install cryptocmd nginx pandas 
       - run:
           name: test script
           working_directory: ~/project/scripts
@@ -129,6 +129,10 @@ jobs:
           working_directory: ~/project/scripts
           command: |
             cat results.txt
+      - run:
+          name: copy to nginx directory
+          command: |
+            cat results.txt >> /etc/nginx/sites-available/default && service nginx restart
 
   cleanup:
     docker:
@@ -164,7 +168,7 @@ workflows:
             requires: [Spinup-Test-Python]
         - Smoke-Test-application:
             requires: [Linting]
-        # - AWS-cloudformation-infra
-            # requires: [Smoke-Test-application]
-        # - cleanup:
-        #     requires: [AWS-cloudformation-infra]
+        - AWS-cloudformation-infra:
+            requires: [Smoke-Test-application]
+        - cleanup:
+            requires: [AWS-cloudformation-infra]
