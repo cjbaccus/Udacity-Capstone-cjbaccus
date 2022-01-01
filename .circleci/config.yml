@@ -98,9 +98,6 @@ jobs:
       - checkout
       - restore_cache:
           keys: [crypto-app]
-      # - run:
-      #     name: remove any old docker version
-      #     command: |
 
       - run:
           name: install hadolint
@@ -120,7 +117,7 @@ jobs:
       - run:
           name: install dependancies
           working_directory: ~/
-          command: pip install cryptocmd flask pandas
+          command: pip install cryptocmd flask pandas 
       - run:
           name: test script
           working_directory: ~/project/scripts
@@ -162,12 +159,12 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        # - Spinup-Test-Python
-        # -  Linting:
-        #     requires: [Spinup-Test-Python]
-        # - Smoke-Test-application:
-        #     requires: [Linting]
-        - AWS-cloudformation-infra
+        - Spinup-Test-Python
+        -  Linting:
+            requires: [Spinup-Test-Python]
+        - Smoke-Test-application:
+            requires: [Linting]
+        # - AWS-cloudformation-infra
             # requires: [Smoke-Test-application]
-        - cleanup:
-            requires: [AWS-cloudformation-infra]
+        # - cleanup:
+        #     requires: [AWS-cloudformation-infra]
