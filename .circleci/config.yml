@@ -38,7 +38,7 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             make setup
-            . .devops/bin/activate
+            ls -la ~/
             make install
       - run:
           name: Lint the code
