@@ -112,7 +112,27 @@
       owner: ubuntu
       group: ubuntu
       mode: 0777
+
+  - name: "copy app.py to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/app.py
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
+  - name: "copy deployGreenApp.sh to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/deployGreenApp.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
       
+      
+
   - name: "verify file"
     become: yes
     raw: ls -la && ls -la /home/ubuntu/
