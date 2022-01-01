@@ -9,7 +9,7 @@ dockerpath=${DOCKER_PATH}:${CURRENT}
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl create deployment cjbaccus/capstone --image=docker.io/${dockerpath}:latest --port=8080
+kubectl create deployment cjbaccus/capstone --image=docker.io/${dockerpath} --port=8080
 echo "sleeping for 60 seconds, while docker spins up..."
 sleep 60
 
