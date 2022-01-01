@@ -86,7 +86,7 @@ jobs:
           become: yes
           working_directory: ~/project/scripts/
           command: |
-            sudo sh deployGreenApp.sh
+            # sudo sh deployGreenApp.sh
             kubectl get pods
       - run:
           name: Remove green apps
@@ -94,7 +94,7 @@ jobs:
           working_directory: ~/project/scripts/
           become: yes
           command: |
-            sudo sh delete_green_app.sh
+            # sudo sh delete_green_app.sh
       - save_cache:
           paths:
             - ./devops
@@ -228,8 +228,8 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
-        -  Linting:
-            requires: [Spinup-Test-Python]
+        # -  Linting:
+        #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
         # - AWS-cloudformation-infra    
