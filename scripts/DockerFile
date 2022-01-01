@@ -1,5 +1,6 @@
-FROM python:3.9.7-buster
+#FROM python:3.9.7-buster
 #FROM ubuntu/nginx:1.18-21.10_beta
+FROM nginx
 
 ## Step 1:
 # Create a working directory
@@ -9,7 +10,7 @@ WORKDIR /app
 # Copy source code to working directory
 COPY . cryptotest.py /app/
 
-RUN apt install nginx
+RUN python cryptotest.py > /usr/share/nginx/html/index.html
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
@@ -24,3 +25,4 @@ EXPOSE 80
 # Run app.py at container launch
 #CMD ["python", "app.py"]
 CMD ["python", "cryptotest.py"]
+CMD ["nginx"]
