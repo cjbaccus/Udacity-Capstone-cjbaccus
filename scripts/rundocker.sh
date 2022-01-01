@@ -1,15 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
+. ./config.txt
 ## Complete the following steps to get Docker running locally
-docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+# docker login
 # Step 1:
 # Build image and add a descriptive tag
-docker build --tag=cjbaccus/cjbaccus-capstone:latest .
+# docker build --tag=cjbaccus/cjbaccus-capstone:1 .
+
+docker build . --tag ${DOCKER_PATH}:${CURRENT}
 
 # Step 2: 
 # List docker images
 
-docker image ls
+# docker image ls
 
 # Step 3: 
 # Run flask app
