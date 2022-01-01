@@ -44,7 +44,7 @@ jobs:
           name: Lint the code
           working_directory: ~/project/scripts/
           command: |
-            . .devops/bin/activate
+            . ~/.devops/bin/activate
             make lint
       - setup_remote_docker:
           version: 19.03.13
