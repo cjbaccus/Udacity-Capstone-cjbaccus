@@ -15,4 +15,4 @@ docker image ls
 # Run flask app
 # docker run -p 80:80 mycryptoflask
 # docker run -p 80:80 $DOCKER_USER/cjbaccus-capstone:latest
-docker push cjbaccus/cjbaccus-capstone:latest
+docker image push cjbaccus/cjbaccus-capstone:latest
