@@ -14,4 +14,4 @@ docker image ls
 # Step 3: 
 # Run flask app
 # docker run -p 80:80 mycryptoflask
-docker run --help
+docker run -p 80:80 ubuntu/nginx:1.18-21.10_beta
