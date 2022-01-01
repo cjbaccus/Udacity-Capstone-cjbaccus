@@ -48,16 +48,16 @@ jobs:
             make lint
       # - setup_remote_docker:
       #     version: 19.03.13
-      # - run:
-      #     name: Build docker image
-      #     command: | 
-      #       . ~/.devops/bin/activate
-      #       make dockerflask
-      # - docker/check
       - run:
-          name: Push docker image
-          command: |
-            make dockerpush
+          name: Build docker image
+          command: | 
+            . ~/.devops/bin/activate
+            make dockerflask
+      # - docker/check
+      # - run:
+      #     name: Push docker image
+      #     command: |
+      #       make dockerpush
 
       - save_cache:
           paths:
