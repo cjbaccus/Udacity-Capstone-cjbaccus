@@ -69,11 +69,16 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
+            - v1-dependancies-
       - kubernetes/install-kubeconfig:
           kubeconfig: KUBECONFIG_DATA
       - kubernetes/install-kubectl
       - run:
           name: Install aws-iam-authenticator
+          working_directory: ~/project/scripts/
           command: |
             sudo make aws-iam
       - run:
@@ -85,7 +90,11 @@ jobs:
           name: Remove green apps
           when: on_fail
           command: |
-            bin/del_current_app.sh
+            scripts/delete_green_app.sh
+      - save_cache:
+          paths:
+            - ./devops
+          key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}     
  
   Linting:
     docker:
@@ -223,6 +232,7 @@ workflows:
         #     requires: [Linting]
         - AWS-cloudformation-infra    
             # requires: [Smoke-Test-application]
-        - deploy_to_k8s
+        - deploy_to_k8s:
+            requires: [AWS-cloudformaion-infra]
         - cleanup:
             requires: [AWS-cloudformation-infra]
