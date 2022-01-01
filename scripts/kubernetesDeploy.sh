@@ -25,8 +25,8 @@ kubectl get pods
 
 # Step 4:
 # Forward the container port to a host
-#kubectl port-forward mymicroservicebuild 8080:8080
+kubectl port-forward cjbaccus/capstone 8080:8080
 
 
-POD_NAME=`kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'`
-kubectl port-forward $POD_NAME 8080:8080
+# POD_NAME=`kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'`
+# kubectl port-forward $POD_NAME 8080:8080
