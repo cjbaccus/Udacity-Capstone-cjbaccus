@@ -29,7 +29,10 @@ lint:
 	# pylint --disable=R,C,W1203 cryptotest.py
 
 dockerflask:
-	./rundocker.sh
+	ls -la 
+	ls -la ~/
+	ls -la ~/project/scripts/
+	bash ~/scripts/rundocker.sh
 
 dockerpush:
 	bash docker_push.sh
