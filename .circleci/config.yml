@@ -1,8 +1,11 @@
 version: 2.1
 
-# orbs:
-  #slack: circleci/slack@4.1.4
-  #aws-cli: circleci/aws-cli@1.3.0
+orbs:
+  # slack: circleci/slack@4.1.4
+  # aws-cli: circleci/aws-cli@1.3.0
+  kubernetes: circleci/kubernetes@0.12.0
+  docker: circleci/docker@1.7.0
+  
 parameters:
   workflow-id:
     type: string
@@ -26,19 +29,85 @@ jobs:
       - image: circleci/python:3.9.7-buster
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependancies-{{ checksum "requirements.txt" }}
+            - v1-dependancies-
       - run:
           name: Install cryptocmd application
-          working_directory: ~/
-          command: pip install cryptocmd && pip install pandas && pip install pylint && pip install flask
+          working_directory: ~/project/scripts/
+          command: |
+            make setup
+            . .devops/bin/activate
+            make install
       - run:
           name: Lint the code
           working_directory: ~/project/scripts/
           command: |
-            python cryptotest.py
-      - save_cache:
-          paths: [scripts]
-          key: crypto-app
+            . .devops/bin/activate
+            make lint
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          name: Build docker image
+          command: | 
+            make dockerflask
+      - docker/check
+      - run:
+          name: Push docker image
+          command: |
+            make dockerpush
 
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependancies-{{ checksum "requirements.txt" }}
+
+  Linting:
+    docker:
+      - image: circleci/python:3.9.7-buster
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [crypto-app]
+
+      - run:
+          name: install hadolint
+          working_directory: ~/project/scripts
+          command: |
+            make setup
+            make install
+            make lint
+            # make dockerflask
+            # make kubernetesdeploy
+  
+  Smoke-Test-application:
+    docker:
+      - image: circleci/python:3.9.7-buster
+    steps:
+      - checkout
+      - run:
+          name: install dependancies
+          working_directory: ~/
+          command: pip install cryptocmd pandas 
+      - run:
+          name: install nginx
+          working_directory: ~/project/scripts
+          command: |
+            sudo apt install nginx
+
+      - run:
+          name: Check results
+          working_directory: ~/project/scripts
+          command: |
+            python cryptotest.py > results.txt
+      - run:
+          name: copy to nginx directory
+          working_directory: ~/project/scripts          
+          command: |
+            cat results.txt
+
+## Take out AWS-cloudformation steps for the time being since it is problematic
   AWS-cloudformation-infra:
     docker:
       - image: python:3.9.0-alpine
@@ -91,50 +160,6 @@ jobs:
       
       - destroy-environment
 
-  Linting:
-    docker:
-      - image: circleci/python:3.9.7-buster
-    steps:
-      - checkout
-      - restore_cache:
-          keys: [crypto-app]
-
-      - run:
-          name: install hadolint
-          working_directory: ~/project/scripts
-          command: |
-            make setup
-            make install
-            make lint
-            # make dockerflask
-            # make kubernetesdeploy
-  
-  Smoke-Test-application:
-    docker:
-      - image: circleci/python:3.9.7-buster
-    steps:
-      - checkout
-      - run:
-          name: install dependancies
-          working_directory: ~/
-          command: pip install cryptocmd pandas 
-      - run:
-          name: install nginx
-          working_directory: ~/project/scripts
-          command: |
-            sudo apt install nginx
-
-      - run:
-          name: Check results
-          working_directory: ~/project/scripts
-          command: |
-            python cryptotest.py > results.txt
-      - run:
-          name: copy to nginx directory
-          working_directory: ~/project/scripts          
-          command: |
-            cat results.txt
-
   cleanup:
     docker:
       - image: amazon/aws-cli
@@ -164,12 +189,12 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        # - Spinup-Test-Python
+        - Spinup-Test-Python
         # -  Linting:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
-        - AWS-cloudformation-infra
-            # requires: [Smoke-Test-application]
-        - cleanup:
-            requires: [AWS-cloudformation-infra]
+        # - AWS-cloudformation-infra
+        #     # requires: [Smoke-Test-application]
+        # - cleanup:
+        #     requires: [AWS-cloudformation-infra]

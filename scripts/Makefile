@@ -7,8 +7,8 @@
 
 setup:
 	# Create python virtualenv & source it
-	# mkdir ~/.devops
-	# python3 -m venv ~/.devops
+	mkdir ~/.devops
+	python3 -m venv ~/.devops
 	# source ~/.devops/bin/activate
 	pip install pylint
 	
@@ -26,10 +26,13 @@ test:
 
 lint:
 	./hadolint DockerFile
-	# pylint --disable=R,C,W1203 cryptotest.py
+	pylint --disable=R,C,W1203 cryptotest.py
 
 dockerflask:
-	bash rundocker.sh
+	./rundocker.sh
+
+dockerpush:
+	./docker_push.sh
 
 kubernetesdeploy:
 	bash kubernetesDeploy.sh
