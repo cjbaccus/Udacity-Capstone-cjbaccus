@@ -64,7 +64,7 @@ jobs:
             - ./devops
           key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
 
-   deploy_to_k8s:
+  deploy_to_k8s:
     docker:
       - image: cimg/base:stable
     steps:
