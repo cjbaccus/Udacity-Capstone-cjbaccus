@@ -26,7 +26,7 @@ commands:
 jobs:
   Spinup-Test-Python:
     docker:
-      - image: circleci/python:3.9.7-buster
+      - image: cimg/python:3.8.11
     steps:
       - checkout
       - restore_cache:
@@ -52,7 +52,7 @@ jobs:
           name: Build docker image
           command: | 
             . ~/.devops/bin/activate
-            make dockerflask
+            make test
       # - docker/check
       # - run:
       #     name: Push docker image

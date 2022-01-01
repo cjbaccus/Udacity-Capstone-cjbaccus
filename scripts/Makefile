@@ -23,6 +23,7 @@ test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
 	#python -m pytest --nbval notebook.ipynb
+	docker ps
 
 lint:
 	./hadolint Dockerfile
