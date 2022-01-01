@@ -53,7 +53,7 @@
   - name: "copy Dockerfile to server"
     become: yes
     copy:
-      src: ~/project/scripts/DockerFile
+      src: ~/project/scripts/Dockerfile
       dest: /home/ubuntu/
       owner: ubuntu
       group: ubuntu
