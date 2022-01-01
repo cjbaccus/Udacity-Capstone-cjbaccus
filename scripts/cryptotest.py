@@ -3,6 +3,8 @@
 ''' This will return the current values of helium blockchain based on daily market values'''
 
 from cryptocmd import CmcScraper
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
 # import pandas as pd
 # from flask import Flask
 # from flask.logging import create_logger
@@ -25,6 +27,31 @@ df = scraper.get_dataframe()
 
 print(df)
 
+
+hostName = "localhost"
+serverPort = 8080
+
+class MyServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes("<html><head><title>Cryptptest</title></head>", "utf-8"))
+        self.wfile.write(bytes("<body>", "utf-8"))
+        self.wfile.write(bytes("<p>{{ df }}</p>", "utf-8"))
+        self.wfile.write(bytes("</body></html>", "utf-8"))
+
+if __name__ == "__main__":        
+    webServer = HTTPServer((hostName, serverPort), MyServer)
+    print("Server started http://%s:%s" % (hostName, serverPort))
+
+    try:
+        webServer.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
+    webServer.server_close()
+    print("Server stopped.")
 
 # app = Flask(__name__)
 # # LOG = create_logger(app)
