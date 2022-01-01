@@ -5,3 +5,4 @@ Jinja2==3.0.1
 MarkupSafe
 Werkzeug==2.0.1
 pylint
+docker.io
