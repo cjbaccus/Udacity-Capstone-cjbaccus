@@ -132,7 +132,7 @@ jobs:
       - run:
           name: copy to nginx directory
           command: |
-            sudo cat results.txt >> /var/www/html/index.nginx-debian.html && sudo service nginx restart
+            sudo cat results.txt > /var/www/html/crypto.html && chmod 766 /var/www/html/crypto.html && sudo service nginx restart
             sudo ls -la /var/www/html/
       - run:
           name: curl local for results
