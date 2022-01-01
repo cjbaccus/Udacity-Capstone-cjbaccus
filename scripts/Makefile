@@ -28,8 +28,6 @@ lint:
 	./hadolint Dockerfile
 	# pylint --disable=R,C,W1203 cryptotest.py
 
-dockerbuild:
-	docker build . -t cjbaccus/capstone-crypto:1
 
 dockerflask:
 	ls -la 
