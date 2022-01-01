@@ -122,7 +122,7 @@ jobs:
           name: install nginx
           working_directory: ~/project/scripts
           command: |
-            apt install nginx
+            sudo apt install nginx
 
       - run:
           name: Check results
