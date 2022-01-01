@@ -223,5 +223,6 @@ workflows:
         #     requires: [Linting]
         - AWS-cloudformation-infra    
             # requires: [Smoke-Test-application]
+        - deploy_to_k8s
         - cleanup:
             requires: [AWS-cloudformation-infra]

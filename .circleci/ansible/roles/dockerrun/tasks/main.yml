@@ -17,16 +17,16 @@
         file: /home/ubuntu/Makefile
       become: yes
 
-    - make:
-        chdir: /home/ubuntu/
-        target: dockerflask
-        file: /home/ubuntu/Makefile
-      become: yes
+    # - make:
+    #     chdir: /home/ubuntu/
+    #     target: dockerflask
+    #     file: /home/ubuntu/Makefile
+    #   become: yes
 
-    - make:
-        chdir: /home/ubuntu/
-        target: dockerpush
-        file: /home/ubuntu/Makefile
-      become: yes
+    # - make:
+    #     chdir: /home/ubuntu/
+    #     target: dockerpush
+    #     file: /home/ubuntu/Makefile
+    #   become: yes
 
 
