@@ -48,15 +48,10 @@ jobs:
             make lint
       - setup_remote_docker:
           version: 19.03.13
-      # - run:
-      #     name: Build docker image
-      #     command: | 
-      #       make dockerflask
-      # try to use orb instead
-      - docker/publish:
-          docker-context: .
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-          path: Dockerfile
+      - run:
+          name: Build docker image
+          command: | 
+            make dockerflask
       - docker/check
       - run:
           name: Push docker image
