@@ -11,6 +11,7 @@ WORKDIR /app
 COPY . cryptotest.py /app/
 
 RUN python cryptotest.py > /usr/share/nginx/html/index.html
+RUN service nginx start
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
@@ -25,4 +26,4 @@ EXPOSE 80
 # Run app.py at container launch
 #CMD ["python", "app.py"]
 CMD ["python", "cryptotest.py"]
-CMD ["nginx"]
+
