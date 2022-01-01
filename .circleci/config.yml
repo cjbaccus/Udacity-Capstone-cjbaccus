@@ -133,7 +133,7 @@ jobs:
           name: copy to nginx directory
           command: |
             # sudo cat results.txt >> /data/www/inex.html && sudo service nginx restart
-            sudo ls -la /data/www/
+            sudo ls -la /var/www/
       - run:
           name: curl local for results
           command: |
