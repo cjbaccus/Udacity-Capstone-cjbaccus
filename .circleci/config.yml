@@ -34,7 +34,7 @@ jobs:
           name: Lint the code
           working_directory: ~/project/scripts/
           command: |
-            pylint cryptotest.py
+            python cryptotest.py
       - save_cache:
           paths: [scripts]
           key: crypto-app
@@ -128,11 +128,22 @@ jobs:
           name: Check results
           working_directory: ~/project/scripts
           command: |
-            cat results.txt
+            python cryptotest.py > results.txt
       - run:
           name: copy to nginx directory
           command: |
-            cat results.txt >> /etc/nginx/sites-available/default && service nginx restart
+            sudo cat results.txt >> /etc/nginx/sites-available/default && sudo service nginx restart
+      - run:
+          name: curl local for results
+          command: |
+            URL="http://127.0.0.1/"
+            echo $URL
+            if curl -s ${URL} | grep "Welcome"
+            then
+              return 1
+            else 
+              return 0
+            fi
 
   cleanup:
     docker:
