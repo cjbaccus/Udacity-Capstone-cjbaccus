@@ -1,6 +1,7 @@
 *.gem
 *.rbc
 *.cer
+*.pem
 list.txt
 /.config
 /coverage/
