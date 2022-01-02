@@ -85,6 +85,9 @@ jobs:
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
             kubectl version --client
+            kubectl config set-cluster crypto-2 --server=http://localhost:8080
+            kubectl config set-context crypto-system --cluster=crypto-2
+            kubectl config use-context crypto-system
       - run:
           name: install eksctl
           working_directory: ~/project/scripts/
