@@ -170,6 +170,15 @@
       group: ubuntu
       mode: 0777
 
+  - name: "copy buildeks.sh to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/buildeks.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777  
+
   - name: "verify file"
     become: yes
     raw: ls -la && ls -la /home/ubuntu/

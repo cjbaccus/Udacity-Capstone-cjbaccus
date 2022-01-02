@@ -36,8 +36,6 @@ dockerpush:
 	./docker_push.sh
 
 kubernetesdeploy:
-	# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-	# sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 	bash kubernetesDeploy.sh
 
 aws-iam:
@@ -45,5 +43,16 @@ aws-iam:
 	curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator
 	chmod +x ./aws-iam-authenticator
 	mv ./aws-iam-authenticator /usr/local/bin
+
+eksctlinstall:
+	curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+	sudo mv /tmp/eksctl /usr/local/bin
+	eksctl version
+	sh buildeks.sh
+
+kubectlinstall:
+	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+	
 
 all: setup install lint dockerflask kubernetesdeploy
