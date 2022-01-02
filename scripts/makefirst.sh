@@ -3,6 +3,9 @@
 
 . ./config.txt
 # deploy app into k8s
+kubectl config set-cluster crypto-${LAST} --server=http://localhost:8080
+kubectl config set-context crypto-system-${LAST} --cluster=crypto-${LAST}
+kubectl config use-context crypto-system-${LAST}
 kubectl create deployment crypto-${LAST} --image=docker.io/${DOCKER_PATH}:${LAST} --replicas=2 --port=80
 kubectl rollout status deployment/crypto-${LAST} # Health check
 
