@@ -4,6 +4,7 @@
 . ./config.txt
 
 kubectl expose -h
+kubeadm init
 # deploy app into k8s
 # kubectl config set-cluster crypto-${LAST} --server=http://localhost:8080
 # kubectl config set-context crypto-system-${LAST} --cluster=crypto-${LAST}
