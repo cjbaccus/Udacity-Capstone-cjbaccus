@@ -96,11 +96,11 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             cat ~/.kube/config | base64 -w 0
-      # - run:
-      #     name: get kubecnf data
-      #     working_directory: ~/project/scripts/
-      #     commands: |
-      #       cat ~/.kube/config | base64 -w 0
+      - run:
+          name: spinup first k8s app
+          working_directory: ~/project/scripts/
+          command: |
+            sudo make 1st
       - run:
           name: spinup eks blue instance
           working_directory: ~/project/scripts/
