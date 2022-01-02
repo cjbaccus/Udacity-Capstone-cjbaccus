@@ -100,7 +100,8 @@ jobs:
           name: spinup first k8s app
           working_directory: ~/project/scripts/
           command: |
-            sudo make 1st
+            kubectl create deployment crypto-2 --image=docker.io/cjbaccus/capstone:2 --replicas=2 --port=80
+
       - run:
           name: spinup eks blue instance
           working_directory: ~/project/scripts/
