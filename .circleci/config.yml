@@ -92,10 +92,10 @@ jobs:
             sudo mv /tmp/eksctl /usr/local/bin
             sudo make eksctlinstall
       - run:
-          name: get KUBECONFIG data
+          name: get kubecnf data
           working_directory: ~/project/scripts/
           commands: |
-            sudo make k8_config
+            cat ~/.kube/config | base64 -w 0
       - run:
           name: spinup eks blue instance
           working_directory: ~/project/scripts/
