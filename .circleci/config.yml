@@ -64,6 +64,32 @@ jobs:
             - ./devops
           key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
 
+  setup_k8s_initial:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}
+            - v1-dependancies-
+      - run:
+          name: install aws auth
+          working_directory: ~/project/scripts/
+          command: |
+            sudo make aws-iam
+      - run:
+          name: kubectl install
+          working_directory: ~/project/scripts/
+          command: |
+            sudo make kubectlinstall
+            kubectl version --client
+      - run:
+          name: install eksctl
+          working_directory: ~/project/scripts/
+          command: |
+            sudo make eksctlinstall
+
   deploy_to_k8s:
     docker:
       - image: cimg/base:stable
@@ -87,6 +113,7 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             # sudo sh deployGreenApp.sh
+            sudo make kubernetesdeploy
             kubectl get pods
       - run:
           name: Remove green apps
@@ -228,13 +255,14 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
+        - setup_k8s_initial
         # -  Linting:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
-        - AWS-cloudformation-infra    
-        #     # requires: [Smoke-Test-application]
-        # - deploy_to_k8s:
-        #     requires: [Spinup-Test-Python]
-        - cleanup:
-            requires: [AWS-cloudformation-infra]
+        # - AWS-cloudformation-infra    
+        # #     # requires: [Smoke-Test-application]
+        # # - deploy_to_k8s:
+        # #     requires: [Spinup-Test-Python]
+        # - cleanup:
+        #     requires: [AWS-cloudformation-infra]
