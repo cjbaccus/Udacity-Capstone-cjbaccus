@@ -95,7 +95,7 @@ jobs:
           name: get KUBECONFIG data
           working_directory: ~/project/scripts/
           commands: |
-            sudo make k8_configs
+            sudo make k8_config
       - run:
           name: spinup eks blue instance
           working_directory: ~/project/scripts/
