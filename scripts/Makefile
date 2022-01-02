@@ -53,6 +53,6 @@ kubectlinstall:
 	install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 eks_initial:
-	sh buildks.sh	
+	sh buildeks.sh	
 
 all: setup install lint dockerflask kubernetesdeploy
