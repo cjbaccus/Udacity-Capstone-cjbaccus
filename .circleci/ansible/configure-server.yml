@@ -19,6 +19,14 @@
       raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
       changed_when: false
 
+    - name: "install eksctl"
+      become: true
+      raw: curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+
+    - name: "mv eksctl"
+      become: yes
+      raw: sudo mv /tmp/eksctl /usr/local/bin
+
   roles:
     - configure-server
     - dockerrun
