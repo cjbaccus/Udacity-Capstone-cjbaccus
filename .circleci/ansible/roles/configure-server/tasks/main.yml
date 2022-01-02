@@ -42,11 +42,11 @@
       state: latest
 
   - name: Add kubernetes GPG apt Key
-  become: yes
-  apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    become: yes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
-    state: present
+      state: present
 
   - name: Add kubernetes Repository
     become: yes
