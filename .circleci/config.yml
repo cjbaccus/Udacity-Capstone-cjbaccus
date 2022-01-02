@@ -232,9 +232,9 @@ workflows:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
-        # - AWS-cloudformation-infra    
+        - AWS-cloudformation-infra    
         #     # requires: [Smoke-Test-application]
-        - deploy_to_k8s:
-            requires: [Spinup-Test-Python]
-        # - cleanup:
-        #     requires: [AWS-cloudformation-infra]
+        # - deploy_to_k8s:
+        #     requires: [Spinup-Test-Python]
+        - cleanup:
+            requires: [AWS-cloudformation-infra]

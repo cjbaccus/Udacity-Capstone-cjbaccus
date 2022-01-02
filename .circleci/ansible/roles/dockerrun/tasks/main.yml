@@ -11,11 +11,11 @@
         file: /home/ubuntu/Makefile
       become: yes
 
-    - make:
-        chdir: /home/ubuntu/
-        target: lint
-        file: /home/ubuntu/Makefile
-      become: yes
+    # - make:
+    #     chdir: /home/ubuntu/
+    #     target: lint
+    #     file: /home/ubuntu/Makefile
+    #   become: yes
 
     # - make:
     #     chdir: /home/ubuntu/
@@ -28,5 +28,14 @@
     #     target: dockerpush
     #     file: /home/ubuntu/Makefile
     #   become: yes
+    - make:
+        chdir: /home/ubuntu/
+        target: aws-iam
+        file: /home/ubuntu/Makefile
+      become: yes
 
-
+    - make:
+        chdir: /home/ubuntu/
+        target: kubernetesdeploy
+        file: /home/ubuntu/Makefile
+      become: yes

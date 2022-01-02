@@ -140,6 +140,15 @@
       group: ubuntu
       mode: 0777
 
+  - name: "copy kubernetesDeploy.sh to server"
+    become: yes
+    copy:
+      src: ~/project/scripts/kubernetesDeploy.sh
+      dest: /home/ubuntu/
+      owner: ubuntu
+      group: ubuntu
+      mode: 0777
+
   - name: "verify file"
     become: yes
     raw: ls -la && ls -la /home/ubuntu/
