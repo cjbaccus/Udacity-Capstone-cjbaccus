@@ -55,4 +55,7 @@ kubectlinstall:
 eks_initial:
 	sh buildeks.sh	
 
+1st:
+	sh makefirst.sh
+
 all: setup install lint dockerflask kubernetesdeploy
