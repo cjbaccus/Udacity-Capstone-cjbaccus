@@ -83,7 +83,7 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             sudo make kubectlinstall
-            kubectl version --client
+            #kubectl version --client
       - run:
           name: install eksctl
           working_directory: ~/project/scripts/
@@ -254,7 +254,7 @@ jobs:
 workflows:
     Spinup-Test-Python:
       jobs:
-        - Spinup-Test-Python
+        # - Spinup-Test-Python
         - setup_k8s_initial
         # -  Linting:
         #     requires: [Spinup-Test-Python]
