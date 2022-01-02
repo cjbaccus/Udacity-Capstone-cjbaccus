@@ -83,7 +83,7 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             sudo make kubectlinstall
-            #kubectl version --client
+            kubectl version --client
       - run:
           name: install eksctl
           working_directory: ~/project/scripts/
