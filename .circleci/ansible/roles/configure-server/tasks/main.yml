@@ -18,7 +18,7 @@
   - name: "install requirements for app and docker"
     become: yes
     apt:
-      name: ["python3-pip", "python3-kubernetes", "kubernetes", "git", "python3-flask", "ca-certificates", "curl", "gnupg", "lsb-release", "python3-venv"]
+      name: ["python3-pip", "git", "python3-flask", "ca-certificates", "curl", "gnupg", "lsb-release", "python3-venv"]
       state: latest
       update_cache: yes
 
@@ -41,6 +41,27 @@
       name: ["docker-ce", "docker-ce-cli", "containerd.io"] 
       state: latest
 
+    - name: Add kubernetes GPG apt Key
+    become: yes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+      state: present
+
+  - name: Add kubernetes Repository
+    become: yes
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+
+      state: present
+
+  - name: Update apt and install docker-ce and kubectl
+    become: yes
+    apt: 
+      update_cache: yes
+      name: ["docker-ce", "docker-ce-cli", "containerd.io", "kubectl"] 
+      state: latest
+  
   - name: "copy Makefile to server"
     become: yes
     copy:
