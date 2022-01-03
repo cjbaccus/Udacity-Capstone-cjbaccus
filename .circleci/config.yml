@@ -89,9 +89,10 @@ jobs:
           name: create kubeconfig
           working_directory: ~/
           command: |
-            mkdir -p .kube/
-            sudo cp -i /etc/kubernetes/admin.conf .kube/config
-            sudo chown $(id -u):$(id -g) .kube/config
+            kubectl config view
+            # mkdir -p .kube/
+            # sudo cp -i /etc/kubernetes/admin.conf .kube/config
+            # sudo chown $(id -u):$(id -g) .kube/config
       - run:
           name: install eksctl
           working_directory: ~/project/scripts/
