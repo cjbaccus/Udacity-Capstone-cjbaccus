@@ -79,19 +79,19 @@ jobs:
           command: |
             sudo make aws-iam
       - run:
-          name: create kubeconfig
-          working_directory: ~/
-          command: |
-            mkdir -p .kube/
-            sudo cp -i /etc/kubernetes/admin.conf .kube/config
-            sudo chown $(id -u):$(id -g) .kube/config
-      - run:
           name: kubectl install
           working_directory: ~/project/scripts/
           command: |
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
             kubectl version --client
+      - run:
+          name: create kubeconfig
+          working_directory: ~/
+          command: |
+            mkdir -p .kube/
+            sudo cp -i /etc/kubernetes/admin.conf .kube/config
+            sudo chown $(id -u):$(id -g) .kube/config
       - run:
           name: install eksctl
           working_directory: ~/project/scripts/
