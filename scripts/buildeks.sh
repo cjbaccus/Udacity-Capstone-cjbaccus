@@ -1,8 +1,8 @@
 #!/bin/bash
 
 eksctl create cluster \
---name capstone-cjbaccus \
---region us-east-2 \
+--name crypto-2 \
+--region us-east-1 \
 --with-oidc \
 --ssh-access \
 --ssh-public-key netbox \
