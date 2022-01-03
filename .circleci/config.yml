@@ -79,6 +79,13 @@ jobs:
           command: |
             sudo make aws-iam
       - run:
+          name: create kubeconfig
+          working_directory: ~/
+          command: |
+            mkdir -p .kube/
+            sudo cp -i /etc/kubernetes/admin.conf .kube/config
+            sudo chown $(id -u):$(id -g) .kube/config
+      - run:
           name: kubectl install
           working_directory: ~/project/scripts/
           command: |
