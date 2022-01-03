@@ -13,7 +13,7 @@ kubectl create deployment crypto-${LAST} --image=docker.io/${DOCKER_PATH}:${LAST
 kubectl rollout status deployment/crypto-${LAST} # Health check
 
 # # setup blue load balancer
-kubectl expose deployment crypto-${LAST} --type=LoadBalancer --port=80 --target-port=8080 --name=blue-lb --save-config
+kubectl expose deployment crypto-${LAST} --type=LoadBalancer --port=8080 --target-port=8080 --name=blue-lb --save-config
 
 # while [ 1 ]
 # do
