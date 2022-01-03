@@ -111,13 +111,13 @@ jobs:
           name: spinup first k8s app
           working_directory: ~/project/scripts/
           command: |
-            sudo make 1st
+            make 1st
 
       - run:
           name: spinup eks blue instance
           working_directory: ~/project/scripts/
           command: |
-            sudo make eks_initial
+            make eks_initial
 
 
   deploy_to_k8s:
