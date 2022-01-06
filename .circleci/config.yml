@@ -107,11 +107,11 @@ jobs:
       #     working_directory: ~/project/scripts/
       #     command: |
       #       cat ~/.kube/config | base64 -w 0
-      - run:
-          name: spinup first k8s app
-          working_directory: ~/project/scripts/
-          command: |
-            make 1st
+      # - run:
+      #     name: spinup first k8s app
+      #     working_directory: ~/project/scripts/
+      #     command: |
+      #       make 1st
 
       - run:
           name: spinup eks blue instance
