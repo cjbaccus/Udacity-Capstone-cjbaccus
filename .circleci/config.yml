@@ -284,14 +284,14 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
-        - setup_k8s_initial
+        # - setup_k8s_initial
         # -  Linting:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
         # - AWS-cloudformation-infra    
         # #     # requires: [Smoke-Test-application]
-        # # - deploy_to_k8s:
-        # #     requires: [Spinup-Test-Python]
+        - deploy_to_k8s:
+            requires: [Spinup-Test-Python]
         # - cleanup:
         #     requires: [AWS-cloudformation-infra]
