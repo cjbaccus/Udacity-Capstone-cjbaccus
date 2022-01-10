@@ -152,8 +152,8 @@ jobs:
           working_directory: ~/project/scripts/
           command: |
             # sudo sh deployGreenApp.sh
-            sudo make kubernetesdeploy
-            kubectl get pods
+            # sudo make kubernetesdeploy
+            # kubectl get pods
       - run:
           name: Remove green apps
           when: on_fail
