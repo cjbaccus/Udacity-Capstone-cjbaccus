@@ -163,6 +163,7 @@ jobs:
       - save_cache:
           paths:
             - ./devops
+            - ~/.aws
           key: v1-dependancies-{{ checksum "~/project/scripts/requirements.txt" }}     
  
   Linting:
@@ -292,14 +293,14 @@ workflows:
     Spinup-Test-Python:
       jobs:
         - Spinup-Test-Python
+        - deploy_to_k8s:
+            requires: [Spinup-Test-Python]
         # - setup_k8s_initial
         # -  Linting:
         #     requires: [Spinup-Test-Python]
         # - Smoke-Test-application:
         #     requires: [Linting]
-        # - AWS-cloudformation-infra    
-        # #     # requires: [Smoke-Test-application]
-        - deploy_to_k8s:
-            requires: [Spinup-Test-Python]
+        - AWS-cloudformation-infra: 
+            requires: [deploy_to_k8s]
         # - cleanup:
         #     requires: [AWS-cloudformation-infra]
