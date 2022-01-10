@@ -141,10 +141,10 @@ jobs:
           name: Put in env creds for aws 
           working_directory: ~/project/scripts/
           command: | 
-            sudo mkdir .aws
-            sudo echo "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY" > .aws/credentials
-            sudo ls -la
-            sudo cat .aws/credentials
+            mkdir .aws
+            echo "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY" > .aws/credentials
+            ls -la
+            cat .aws/credentials
       - run:
           name: Deploy green apps into EKS
           working_directory: ~/project/scripts/
