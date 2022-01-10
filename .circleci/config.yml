@@ -138,8 +138,15 @@ jobs:
           command: |
             sudo make aws-iam
       - run:
+          name: Put in env creds for aws 
+          working_directory: ~/project/scripts/
+          command: | 
+            echo "[default]\ 
+            aws_access_key_id=$AWS_ACCESS_KEY_ID\
+            aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" > .aws/credentials
+            cat .aws/credentials
+      - run:
           name: Deploy green apps into EKS
-          become: yes
           working_directory: ~/project/scripts/
           command: |
             # sudo sh deployGreenApp.sh
@@ -149,7 +156,6 @@ jobs:
           name: Remove green apps
           when: on_fail
           working_directory: ~/project/scripts/
-          become: yes
           command: |
             # sudo sh delete_green_app.sh
       - save_cache:
